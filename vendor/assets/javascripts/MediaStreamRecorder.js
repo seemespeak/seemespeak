@@ -335,7 +335,11 @@ function WhammyRecorder(mediaStream) {
             // ~10 fps
             if (time - lastFrameTime < 90) return;
 
-            context.drawImage(video, 0, 0, imageWidth, imageHeight);
+            try {
+              context.drawImage(video, 0, 0, imageWidth, imageHeight);
+            } catch(e) {
+              console.log("Error capturing keyframe: "+e);
+            }
 
             // whammy.add(canvas, time - lastFrameTime);
             whammy.add(canvas);
