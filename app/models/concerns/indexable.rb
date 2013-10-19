@@ -63,5 +63,9 @@ module Concerns
     def configuration
       self.class.configuration
     end
+
+    def persisted?
+      self.id != nil
+    end
   end
 end

@@ -2,6 +2,7 @@ class Entry
   include Virtus.model
   include Concerns::Indexable
   include ActiveModel::Validations
+  include ActiveModel::Conversion
 
   attribute :transcription, String
   attribute :tags,          Array[String]

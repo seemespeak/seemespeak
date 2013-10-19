@@ -4,7 +4,14 @@ class VideosController < ApplicationController
   always_background :background_method
 
   def index
-    self.class.background_method(rand(100000))
+  end
+
+  def new
+    @entry = Entry.new
+  end
+
+  def create
+
   end
 
   def self.background_method(int)
