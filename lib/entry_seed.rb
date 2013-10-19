@@ -72,8 +72,8 @@ class EntrySeed
     EntrySeed.words.each do |word|
       entry_hash = { 
       	             :transcription => word, 
-                     :flags         => random_flag, 
-                     :reviewed      => random_boolean, 
+                     :flags         => [random_flag], 
+                     :reviewed      => true, 
                      :language      => random_language, 
                      :dialect       => random_dialect
                    }
