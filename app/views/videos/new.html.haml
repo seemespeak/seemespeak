@@ -1,0 +1,9 @@
+%h2 Record new video
+%section#video-preview
+  %fieldset#buttons
+    %button#camera-me 1. Turn on camera
+    %button#record-me Record
+    %button#stop-me{disabled: "disabled"} ◼
+    / <button id="play-me" disabled>►</button>
+  #elasped-time
+  %video#live{autoplay: "", height: "480", src: "", width: "640"}
