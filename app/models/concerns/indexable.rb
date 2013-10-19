@@ -57,6 +57,14 @@ module Concerns
           model
         end
       end
+
+      def count(args = {})
+        args[:index] = configuration.index
+        args[:type] = type
+
+        result = client.count args
+        result["count"]
+      end
     end
 
     def client
