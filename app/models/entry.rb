@@ -41,6 +41,12 @@ class Entry
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
+  def initialize(hash = {})
+    flag_keys = hash.keys.reject { |key| !ALLOWED_FLAGS.include?(key.to_s) }
+    hash[:flags] = flag_keys
+    super(hash)
+  end
+
   attribute :transcription, String
   attribute :tags,          Array[String], :coercer => lambda { |input| String === input ? input.split : input }
   attribute :flags,         Array[String], :coercer => lambda { |input| String === input ? input.split : input }
@@ -62,6 +68,12 @@ class Entry
     unknown_flags = flags - ALLOWED_FLAGS
     unless unknown_flags.empty?
       errors.add(:flags, "Unknown flags: #{flags.join(',')}")
+    end
+  end
+
+  ALLOWED_FLAGS.each do |flag|
+    define_method flag do
+      flags.include? flag
     end
   end
 end

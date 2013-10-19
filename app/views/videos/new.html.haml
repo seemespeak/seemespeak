@@ -8,9 +8,10 @@
     = f.label :transcription
     = f.text_field :transcription
     = f.label :tags
-    = f.text_field :tags
-    = f.label :flags
-    = f.text_field :flags
+    = f.text_field :tags, :value => @entry.tags.join(" ")
+    - Entry::ALLOWED_FLAGS.each do |flag|
+      = f.label flag
+      = f.check_box flag
     = f.label :language
     = f.text_field :language
     = f.label :dialect
