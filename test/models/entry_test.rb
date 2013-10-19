@@ -106,4 +106,11 @@ class VideoTest < ActiveSupport::TestCase
 
     assert entries.first.id != entries2.first.id
   end
+
+  test "count returns a number of videos" do
+    count = Entry.count
+
+    assert count
+    assert_equal Fixnum, count.class
+  end
 end

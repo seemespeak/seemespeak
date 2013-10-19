@@ -11,12 +11,15 @@
   .row-fluid
     .span6
       %h3 Learn a word today!
-      %p.well
-      %p And now you know how to say #WORD# in #LANGUAGE#
+      %p.well.lead
+        %video{height: "100%", width: "100%", controls: "controls", loop: "loop", poster: "http://rumble.seemespeak.org/videofiles/Festplatte.jpg"}
+          %source{src: "http://rumble.seemespeak.org/videofiles/Festplatte.mp4", type: "video/mp4"}
+          %source{src: "http://rumble.seemespeak.org/videofiles/Festplatte.webm", type: "video/webm"}
+        And now you know how to say <strong>#{@random_entry.transcription}</strong> in <strong>#{@random_entry.language}</strong>
     .span6
       %h3 About
       %p.lead
         See Me Speak is a dictionary for sign language. You can easily
         search for signs and even add missing ones with your webcam.
       %p.lead
-        Currently we have #WORDS# videos available in the database.
+        Currently we have #{Entry.count} videos available in the database.
