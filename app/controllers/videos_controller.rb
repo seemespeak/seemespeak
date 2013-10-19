@@ -20,4 +20,7 @@ class VideosController < ApplicationController
       Rails.logger.debug("background #{int}!!")
     end
   end
+
+  def new
+  end
 end
