@@ -6,7 +6,7 @@
   %legend
     Results for: #{params[:transcription]}
   .span9
-    = @entries.in_groups_of(3) do |group|
+    = @entries.to_a.in_groups_of(3) do |group|
       .row-fluid
         - group.each do |e|
           - if e.present?
