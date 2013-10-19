@@ -1,0 +1,12 @@
+= form_for(@entry, url: videos_path(@entry)) do |f|
+  = f.label :transcription
+  = f.text_field :transcription
+  = f.label :tags
+  = f.text_field :tags
+  = f.label :flags
+  = f.text_field :flags
+  = f.label :language
+  = f.text_field :language
+  = f.label :dialect
+  = f.text_field :dialect
+  = f.button :submit
