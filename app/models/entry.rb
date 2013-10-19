@@ -8,8 +8,8 @@ class Entry
   include ActiveModel::Conversion
 
   attribute :transcription, String
-  attribute :tags,          Array, :coercer => lambda { |input| input.split }, :default => []
-  attribute :flags,         Array, :coercer => lambda { |input| input.split }, :default => []
+  attribute :tags,          Array[String], :coercer => lambda { |input| input.split }, :default => []
+  attribute :flags,         Array[String], :coercer => lambda { |input| input.split }, :default => []
   attribute :reviewed,      Boolean, :default => false
   attribute :language,      String
   attribute :dialect,       String
@@ -20,7 +20,6 @@ class Entry
             :tags,
             :language,
             :presence => true
-            #:video
 
   validates :flags, with: :validate_flags
   validates :language, inclusion: ALLOWED_LANGUAGES
