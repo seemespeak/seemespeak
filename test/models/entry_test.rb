@@ -99,4 +99,11 @@ class VideoTest < ActiveSupport::TestCase
     entries = Entry.search
     assert (entries.none? { |e| e.id == entry.id })
   end
+
+  test "different random seeds generate different result lists" do
+    entries = Entry.search(:random => 100, :reviewed => false)
+    entries2 = Entry.search(:random => 200, :reviewed => false)
+
+    assert entries.first.id != entries2.first.id
+  end
 end
