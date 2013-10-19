@@ -67,6 +67,14 @@ module Concerns
         name.underscore
       end
 
+      ##
+      # Search using a query object
+      #
+      # @options args
+      #   @option phrase The phrase to search for
+      #   @option reviewed Whether to only display reviewed material. Default: true
+      #   @option ignored_flags Flags to ignore
+      #   @option tags Tags to filter by
       def search(args = {})
         query = Query.new(args)
         args[:query] = query.to_hash
