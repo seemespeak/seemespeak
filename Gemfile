@@ -40,6 +40,9 @@ gem 'twitter-bootstrap-rails'
 # js runtime gem
 gem 'therubyrhino'
 
+# video player
+gem 'popcornjs-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
