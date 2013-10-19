@@ -59,6 +59,8 @@ class RecordVideoView
     , (stream) =>
       @recorder.captureFrom stream
       video.attr "src", window.URL.createObjectURL(stream)
+    , (error) ->
+      throw new Error("getUserMedia failed: "+error)
 
   toggleActivateRecordButton: ->
     b = $("#record-me")
