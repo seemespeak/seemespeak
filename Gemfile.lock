@@ -65,6 +65,8 @@ GEM
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    haml (4.0.3)
+      tilt
     hike (1.2.3)
     i18n (0.6.5)
     ice_nine (0.10.0)
@@ -196,6 +198,7 @@ DEPENDENCIES
   activerecord-jdbcsqlite3-adapter
   coffee-rails (~> 4.0.0)
   elasticsearch
+  haml
   jbuilder (~> 1.2)
   jquery-rails
   rails (= 4.0.0)
