@@ -60,7 +60,7 @@ class RecordVideoView
 
   toggleActivateRecordButton: ->
     b = $("#record-me")
-    b.text if b.attr("disabled") then "Record" else "Recording..."
+    b.text if b.attr("disabled") then b.data("record-label") else b.data("recording-label")
     b.toggleClass "recording"
     b.attr "disabled", !b.attr("disabled")
 

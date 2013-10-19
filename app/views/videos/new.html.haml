@@ -1,8 +1,8 @@
 %h2 Record new video
 %section#video-preview
-  %fieldset#buttons
-    %button#camera-me 1. Turn on camera
-    %button#record-me Record
+  %fieldset#video-controls
+    %button#camera-me= t "turn_on_camera"
+    %button#record-me{ data: {recording_label: t("recording"), record_label: t("record")} }= t "record"
   %video#live{autoplay: "", height: "480", width: "640"}
   = form_for(@entry, url: videos_path(@entry)) do |f|
     = f.label :transcription

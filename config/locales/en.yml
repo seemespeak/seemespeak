@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  turn_on_camera: Turn on camera
+  record: Record
+  recording: Recording...
