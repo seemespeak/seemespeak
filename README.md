@@ -19,7 +19,7 @@ In your project directory, run once:
 
 This survives server restarts.
 
-Find you development logs in log/*.
+Find you development logs in log/\*.
 
 Autoreloading should work, reconfigurations need a restart which takes a bit longer than normal.
 
