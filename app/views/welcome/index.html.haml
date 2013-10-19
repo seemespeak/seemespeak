@@ -4,7 +4,7 @@
       = image_tag("logo.png", alt: "See Me Speak")
   .row-fluid
     .text-center.search-field
-      = form_tag videos_path do
+      = form_tag(videos_path, :method => :get) do
         .input-append
           = text_field_tag :transcription, nil, placeholder: "Go and look up a word..."
           = button_tag "Search", class: "btn"
