@@ -26,21 +26,7 @@
     / Size should be 32 x 32 pixels
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
-  %body
-    .navbar.navbar-fluid-top
-      .navbar-inner
-        .container-fluid
-          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand{href: "#"} Seemespeak
-          .container-fluid.nav-collapse
-            %ul.nav
-              %li= link_to "Link1", "/path1"
-              %li= link_to "Link2", "/path2"
-              %li= link_to "Link3", "/path3"
-          / /.nav-collapse
+  %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
     .container-fluid
       .row-fluid
         .span12
@@ -48,5 +34,7 @@
           = yield
       / /row
       %footer
-        %p © Company 2013
+        %p.text-center
+          A Rails Rumble 2013 project - 
+          %a{href:'http://railsrumble.com/entries/39-seemespeak'} Vote for us!
     / /container

@@ -41,6 +41,7 @@ module Concerns
       #   @option reviewed Whether to only display reviewed material. Default: true
       #   @option ignored_flags Flags to ignore
       #   @option tags Tags to filter by
+      #   @option random A random seed to randomize the result list by
       def search(args = {})
         query = self::Query.new(args)
         args[:body] = query.to_hash
