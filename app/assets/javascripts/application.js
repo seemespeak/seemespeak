@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require popcorn
+//= require popcorn-complete
 //= require turbolinks
 //= require_tree .

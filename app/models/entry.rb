@@ -10,6 +10,7 @@ class Entry
     attribute :tags, Array[String] # interesting tags
     attribute :phrase, String
     attribute :reviewed, Boolean, :default => true
+    attribute :random, Fixnum
 
     def to_hash
       if phrase
@@ -32,7 +33,19 @@ class Entry
         bool[:must] << { :terms => { :tags => tags } }
       end
 
-      { :query => query, :filter => { :bool => bool } }
+      if random
+        random_query = {
+          :function_score => {
+            :query => query,
+            :random_score => {
+              :seed => random
+            }
+          }
+        }
+        { :query => random_query, :filter => { :bool => bool } }
+      else
+        { :query => query, :filter => { :bool => bool } }
+      end
     end
   end
 
@@ -42,8 +55,10 @@ class Entry
   include ActiveModel::Validations
 
   def initialize(hash = {})
-    flag_keys = hash.keys.reject { |key| !ALLOWED_FLAGS.include?(key.to_s) }
-    hash[:flags] = flag_keys
+    unless hash[:flags]
+      flag_keys = hash.keys.reject { |key| !ALLOWED_FLAGS.include?(key.to_s) }
+      hash[:flags] = flag_keys
+    end
     super(hash)
   end
 
