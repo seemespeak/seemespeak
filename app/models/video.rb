@@ -1,6 +1,6 @@
 class Video
   include Virtus.model
 
-  attribute :filename, String
   attribute :length, Fixnum
+  attribute :converted, Boolean, :default => false
 end
