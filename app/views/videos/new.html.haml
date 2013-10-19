@@ -3,10 +3,7 @@
   %fieldset#buttons
     %button#camera-me 1. Turn on camera
     %button#record-me Record
-    %button#stop-me{disabled: "disabled"} ◼
-    / <button id="play-me" disabled>►</button>
-  #elapsed-time
-  %video#live{autoplay: "", height: "480", src: "", width: "640"}
+  %video#live{autoplay: "", height: "480", width: "640"}
   = form_for(@entry, url: videos_path(@entry)) do |f|
     = f.label :transcription
     = f.text_field :transcription
