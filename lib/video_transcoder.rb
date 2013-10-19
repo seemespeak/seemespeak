@@ -1,16 +1,27 @@
+require 'shellwords'
+
 class VideoTranscoder
 
   def transcode(source, target, max_size)
+    return false unless File.exist?(source)
     format = get_format(source)
-    size = calculate_size(format, max_size)
+    size = limit_size(format, max_size)
     execute_transcode(source, target, size)
   end
 
-  def create_picture(source, target, max_size)
-    format = get_format(source)
-    size = calculate_size(format, max_size, true)
-    `avconv -y -i #{source} -t 1 -s #{size.width}x#{size.height} -f image2 -vframes 1 #{target}`
-    [0,11,256].include?($?.exitstatus)
+  def create_picture(source, target, size)
+    return false unless File.exist?(source)
+
+    Tempfile.open(['image', '.png']) do |f|
+      `avconv -y -i #{source} -t 1 -vframes 1 #{Shellwords.shellescape(f.path)}`
+      if ![0,11,256].include?($?.exitstatus)
+        return false
+      end
+
+      `convert #{Shellwords.shellescape(f.path)} -resize #{size.width}x#{size.height}^ -gravity center -extent #{size.width}x#{size.height} #{Shellwords.shellescape(target)}`
+    end
+
+    true
   end
 
   def get_format(movie)
@@ -20,6 +31,7 @@ class VideoTranscoder
 
   def parse_avconv_info(string)
     result = {}
+    return result if string.blank?
     result[:version] = string.match(/avconv version (\d*.\d*)/)[1]
     stream_data = string.match(/Stream #\d.\d.* Video: (.*)/)[1]
     format = stream_data.split(",").map(&:strip)
@@ -35,9 +47,9 @@ class VideoTranscoder
     result
   end
 
-  def calculate_size(format, max_size, enlarge_if_needed = false)
+  def limit_size(format, max_size)
     scale_required = [max_size.width.to_f / format[:width], max_size.height.to_f / format[:height]].min
-    if (enlarge_if_needed || scale_required < 1)
+    if (scale_required < 1)
       return OpenStruct.new(width: (format[:width] * scale_required).round, height: (format[:height] * scale_required).round)
     end
 

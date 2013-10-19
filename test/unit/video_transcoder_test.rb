@@ -45,28 +45,28 @@ output
                  @transcoder.parse_avconv_info(avconv_string))
   end
 
-  def test_calculate_size_for_smaller_values_with_resize
+  def test_limit_size_for_smaller_values_with_resize
     assert_equal(OpenStruct.new(width: 1280, height: 640),
-                 @transcoder.calculate_size({width: 640, height: 320}, OpenStruct.new(width: 1280, height: 720), true))
+                 @transcoder.limit_size({width: 640, height: 320}, OpenStruct.new(width: 1280, height: 720), true))
   end
 
-  def test_calculate_size_for_smaller_values
+  def test_limit_size_for_smaller_values
     assert_equal(OpenStruct.new(width: 640, height: 320),
-                 @transcoder.calculate_size({width: 640, height: 320}, OpenStruct.new(width: 1280, height: 720)))
+                 @transcoder.limit_size({width: 640, height: 320}, OpenStruct.new(width: 1280, height: 720)))
   end
 
-  def test_calculate_size_for_large_height
+  def test_limit_size_for_large_height
     assert_equal(OpenStruct.new(width: 133, height: 320),
-                 @transcoder.calculate_size({width: 200, height: 480}, OpenStruct.new(width: 640, height: 320)))
+                 @transcoder.limit_size({width: 200, height: 480}, OpenStruct.new(width: 640, height: 320)))
   end
 
-  def test_calculate_size_for_large_width
+  def test_limit_size_for_large_width
     assert_equal(OpenStruct.new(width: 640, height: 160),
-                 @transcoder.calculate_size({width: 1280, height: 320}, OpenStruct.new(width: 640, height: 320)))
+                 @transcoder.limit_size({width: 1280, height: 320}, OpenStruct.new(width: 640, height: 320)))
   end
 
-  def test_calculate_size_for_really_big_images
+  def test_limit_size_for_really_big_images
     assert_equal(OpenStruct.new(width: 569, height: 320),
-                 @transcoder.calculate_size({width: 1280, height: 720}, OpenStruct.new(width: 640, height: 320)))
+                 @transcoder.limit_size({width: 1280, height: 720}, OpenStruct.new(width: 640, height: 320)))
   end
 end
