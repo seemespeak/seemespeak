@@ -25,6 +25,10 @@ Autoreloading should work, reconfigurations need a restart which takes a bit lon
 
 See `torquebox.yml` for specific settings like queues.
 
+## Seed
+get some seed data by running 
+* `rake seed:entries`
+
 ## elasticsearch
 
 Get and unzip elasticsearch 0.90.5: https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.5.zip
