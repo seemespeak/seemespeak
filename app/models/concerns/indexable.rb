@@ -11,7 +11,7 @@ module Concerns
       attribute :ignored_flags, Array[String] # the ignored flags
       attribute :tags, Array[String] # interesting tags
       attribute :phrase, String
-      attribute :reviewed, :default => true
+      attribute :reviewed, Boolean, :default => true
 
       def to_hash
         if phrase
