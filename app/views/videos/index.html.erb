@@ -6,7 +6,7 @@
       	  <% if e.present? %>
             <div class="span3">
               <p>
-          	    <%= image_tag(asset_path('rails.png'), :class => "img-polaroid") %>
+          	    <%= link_to(image_tag(asset_path('rails.png'), :class => "img-polaroid"), video_path(e)) %>
           	  </p>
           	  <p>
           	    <%= e.transcription %>

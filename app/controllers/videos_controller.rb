@@ -11,6 +11,10 @@ class VideosController < ApplicationController
     @entry = Entry.new
   end
 
+  def show
+    @entry = Entry.get(params[:id])
+  end
+
   def create
     @entry = Entry.new(params[:entry])
     redirect_to videos_path
