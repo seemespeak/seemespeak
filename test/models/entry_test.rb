@@ -85,7 +85,18 @@ class VideoTest < ActiveSupport::TestCase
     e.index
 
     entries = Entry.search
-    puts entries.inspect
     assert (entries.all? { |e| e.reviewed? })
+  end
+
+  test "standard search finds no flagged content" do
+    entry = Entry.new(:transcription => "my transcription",
+                      :tags => "foo bar",
+                      :flags => "vulgar",
+                      :reviewed => false,
+                      :language => "abc")
+    entry.index
+
+    entries = Entry.search
+    assert (entries.none? { |e| e.id == entry.id })
   end
 end
