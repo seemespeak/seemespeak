@@ -22,6 +22,41 @@ class VideoTest < ActiveSupport::TestCase
 
   test "search" do
     entries = Entry.search
-    assert_equal entries.first.class, Entry
+    assert_equal Entry, entries.first.class
+  end
+
+  test "an empty entry is not valid" do
+    e = Entry.new()
+    assert_equal false, e.valid?
+  end
+
+  test "an entry with all fields set is valid" do
+    e = Entry.new(:transcription => "my transcription",
+                  :tags => "foo bar",
+                  :flags => "vulgar",
+                  :reviewed => false,
+                  :language => "DGS")
+
+    assert_equal true, e.valid?
+  end
+
+  test "an entry with unknown flags is invalid" do
+    e = Entry.new(:transcription => "my transcription",
+                  :tags => "foo bar",
+                  :flags => "funny",
+                  :reviewed => false,
+                  :language => "DGS")
+
+    assert_equal false, e.valid?
+  end
+
+  test "an entry with unknown language is invalid" do
+    e = Entry.new(:transcription => "my transcription",
+                  :tags => "foo bar",
+                  :flags => "vulgar",
+                  :reviewed => false,
+                  :language => "abc")
+
+    assert_equal false, e.valid?
   end
 end
