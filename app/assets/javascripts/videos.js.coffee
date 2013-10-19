@@ -1,41 +1,86 @@
-toggleActivateRecordButton = ->
-  b = $("#record-me")
-  b.textContent = (if b.attr("disabled") then "Record" else "Recording...")
-  b.toggleClass "recording"
-  b.attr "disabled", !b.attr("disabled")
+#= require MediaStreamRecorder
 
-turnOnCamera = (e) ->
-  e.target.disabled = true
-  $("#record-me").disabled = false
-  video = $("video#live")
-  video.attr "controls", false
+VIDEO_OPTIONS =
+  mimeType: 'video/webm'
+  width: 640
+  height: 480
+  defaultDuration: 5000
 
-  navigator.getUserMedia
-    video: true
-    audio: false
-  , (stream) ->
-    video.attr "src", window.URL.createObjectURL(stream)
+class Recorder
+  setBlob: (blob) =>
+    @blob = blob
 
-record = ->
-  elapsedTime = $("#elasped-time")
-  startTime = Date.now()
-  toggleActivateRecordButton()
-  $("#stop-me").attr "disabled", false
+  assertSourceSet: ->
+    throw new Error("Recorder's source isn't set. Call captureFrom first.") unless @mediaRecorder?
 
-stop = ->
-  endTime = Date.now()
-  $("#stop-me").attr "disabled", true
-  document.title = ORIGINAL_DOC_TITLE
-  toggleActivateRecordButton()
-  embedVideoPreview()
+  captureFrom: (stream) ->
+    @mediaRecorder = new MediaStreamRecorder(stream)
+    @mediaRecorder.mimeType = VIDEO_OPTIONS.mimeType
+    @mediaRecorder.videoWidth = VIDEO_OPTIONS.width
+    @mediaRecorder.videoHeight = VIDEO_OPTIONS.height
 
-embedVideoPreview = ->
-  video = $("video#play")
+    # mediaRecorder.frameRate = 300;
+    # mediaRecorder.quality = 15;
+    @mediaRecorder.ondataavailable = @setBlob
 
-initEvents = ->
-  $("#camera-me").on "click", turnOnCamera
-  $("#record-me").on "click", record
-  $("#stop-me").on "click", stop
+  start: ->
+    @assertSourceSet()
+    @mediaRecorder.start()
+
+  stop: ->
+    @assertSourceSet()
+    @mediaRecorder.stop()
+
+  captureSpan: (milliSeconds, cb) ->
+    @assertSourceSet()
+    @mediaRecorder.ondataavailable = (blob) =>
+      @stop()
+      @setBlob blob
+      @mediaRecorder.ondataavailable = @setBlob
+      cb()
+
+    @mediaRecorder.start(milliSeconds)
+
+class RecordVideoView
+  constructor: (recorder) ->
+    @recorder = recorder
+
+  turnOnCamera: (e) =>
+    e.target.disabled = true
+    $("#record-me").disabled = false
+    video = $("video#live")
+    video.attr "controls", false
+
+    navigator.getUserMedia
+      video: true
+      audio: false
+    , (stream) =>
+      @recorder.captureFrom stream
+      video.attr "src", window.URL.createObjectURL(stream)
+
+  toggleActivateRecordButton: ->
+    b = $("#record-me")
+    b.text if b.attr("disabled") then "Record" else "Recording..."
+    b.toggleClass "recording"
+    b.attr "disabled", !b.attr("disabled")
+
+  bind: =>
+    $("#camera-me").on "click", @turnOnCamera
+    $("#record-me").on "click", @record
+    #$("#stop-me").on "click", @stop
+
+  record: =>
+    @toggleActivateRecordButton()
+    @recorder.captureSpan VIDEO_OPTIONS.defaultDuration, =>
+      @toggleActivateRecordButton()
+      alert "Success!"
+    #$("#stop-me").attr "disabled", false
+
+  #stop: =>
+    #$("#stop-me").attr "disabled", true
+    #@recorder.stop()
+    #document.title = ORIGINAL_DOC_TITLE
+    #@toggleActivateRecordButton()
 
 window.URL = window.URL or window.webkitURL
 window.requestAnimationFrame = window.requestAnimationFrame or window.webkitRequestAnimationFrame or window.mozRequestAnimationFrame or window.msRequestAnimationFrame or window.oRequestAnimationFrame
@@ -44,5 +89,6 @@ navigator.getUserMedia = navigator.getUserMedia or navigator.webkitGetUserMedia 
 
 ORIGINAL_DOC_TITLE = document.title
 
+view = new RecordVideoView(new Recorder())
 $ ->
-  initEvents()
+  view.bind()

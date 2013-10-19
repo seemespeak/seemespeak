@@ -64,19 +64,18 @@ class EntrySeed
     puts "------------------------------------ Creating Seed Entries -----------------------------"
     puts "----------------------------------------------------------------------------------------"
 
-    random_boolean = [true, false]
-    random_tag     = ["insult"]
-    random_flag    = ["insult"]
-    random_dialect = ["Hamburg", "Freiburg", "Berlin"]
+    random_boolean  = [true, false].sample
+    random_flag     = Entry::ALLOWED_FLAGS.sample
+    random_language = Entry::ALLOWED_LANGUAGES.sample
+    random_dialect  = ["Hamburg", "Freiburg", "Berlin"].sample
 
     EntrySeed.words.each do |word|
       entry_hash = { 
       	             :transcription => word, 
-                     :tags          => random_tag.sample, 
-                     :flags         => random_flag.sample, 
-                     :reviewed      => random_boolean.sample, 
-                     :language      => "EN", 
-                     :dialect       => random_dialect.sample
+                     :flags         => random_flag, 
+                     :reviewed      => random_boolean, 
+                     :language      => random_language, 
+                     :dialect       => random_dialect
                    }
       entry = Entry.new(entry_hash)
       entry.index

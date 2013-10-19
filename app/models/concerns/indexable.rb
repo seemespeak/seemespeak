@@ -32,6 +32,19 @@ module Concerns
       def type
         name.underscore
       end
+
+      def search(args = {})
+        args[:index] = configuration.index
+        args[:type] = type
+        result = client.search args
+
+        result["hits"]["hits"].map do |item|
+          model = new(item["_source"])
+          id = item["_id"]
+          version = item["_version"]
+          model
+        end
+      end
     end
 
     def client
