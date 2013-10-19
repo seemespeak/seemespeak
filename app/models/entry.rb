@@ -32,10 +32,9 @@ class Entry
         bool[:must] << { :terms => { :tags => tags } }
       end
 
-      { :query => query, :filter => bool }
+      { :query => query, :filter => { :bool => bool } }
     end
   end
-
 
   include Virtus.model
   include Concerns::Indexable

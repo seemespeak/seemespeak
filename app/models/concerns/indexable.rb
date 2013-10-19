@@ -43,7 +43,7 @@ module Concerns
       #   @option tags Tags to filter by
       def search(args = {})
         query = self::Query.new(args)
-        args[:query] = query.to_hash
+        args[:body] = query.to_hash
 
         args[:index] = configuration.index
         args[:type] = type
