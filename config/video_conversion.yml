@@ -1,0 +1,6 @@
+test:
+  temp_path: "tmp"
+development:
+  temp_path: "tmp"
+production:
+  temp_path: "/tmp/seemespeak"
