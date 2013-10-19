@@ -25,7 +25,7 @@ class VideoTranscoder
   end
 
   def get_format(movie)
-    output = `avconv -i #{movie} 2>&1`
+    output = `avconv -i #{Shellwords.shellescape(movie)} 2>&1`
     parse_avconv_info(output)
   end
 
@@ -57,7 +57,7 @@ class VideoTranscoder
   end
 
   def execute_transcode(source, target, size)
-    `avconv -y -i #{source} -an -s #{size.width}x#{size.height} #{target}`
+    `avconv -y -i #{Shellwords.shellescape(source)} -an -s #{size.width}x#{size.height} #{Shellwords.shellescape(target)}`
     [0,11,256].include?($?.exitstatus)
   end
 
