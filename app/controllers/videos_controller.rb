@@ -11,6 +11,11 @@ class VideosController < ApplicationController
 
   def show
     @entry = Entry.get(params[:id])
+
+    respond_to do |format|
+      format.html { render action: "show" }
+      format.js   { render "show.html.js" }
+    end
   end
 
   def create

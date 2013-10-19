@@ -2,7 +2,6 @@
   .row-fluid.page-header.text-center
     %h1
       = image_tag("logo.png", alt: "See Me Speak")
-
 %section.row-fluid
   %legend
     Results for: #{params[:transcription]}
@@ -16,4 +15,6 @@
                 = link_to(image_tag(asset_path('rails.png'), :class => "img-polaroid"), video_path(e))
               %p
                 = e.transcription
+                = link_to "show", video_path(e), :class => "demo", :remote => true
   .span3
+#current_video
