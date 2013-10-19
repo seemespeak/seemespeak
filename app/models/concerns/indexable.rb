@@ -4,40 +4,6 @@ module Concerns
   module Indexable
     extend ActiveSupport::Concern
 
-    class Query
-      include Virtus.model
-
-      attribute :language
-      attribute :ignored_flags, Array[String] # the ignored flags
-      attribute :tags, Array[String] # interesting tags
-      attribute :phrase, String
-      attribute :reviewed, Boolean, :default => true
-
-      def to_hash
-        if phrase
-          query = { :match => { :transcription => query } }
-        else
-          query = { :match_all => {} }
-        end
-
-        bool = Hash.new { |h,k| h[k] = [] }
-
-        if reviewed
-          bool[:must] << { :term => { :reviewed => true } }
-        end
-
-        if ignored_flags
-          bool[:must_not] << { :terms => { :flags => ignored_flags } }
-        end
-
-        if tags && !tags.empty?
-          bool[:must] << { :terms => { :tags => tags } }
-        end
-
-        { :query => query, :filter => bool }
-      end
-    end
-
     included do
       attribute :id, String
       attribute :version, Fixnum
@@ -76,7 +42,7 @@ module Concerns
       #   @option ignored_flags Flags to ignore
       #   @option tags Tags to filter by
       def search(args = {})
-        query = Query.new(args)
+        query = self::Query.new(args)
         args[:query] = query.to_hash
 
         args[:index] = configuration.index

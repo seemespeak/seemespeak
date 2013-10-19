@@ -25,7 +25,7 @@ class VideoTest < ActiveSupport::TestCase
               :tags => "foo bar",
               :flags => "vulgar",
               :reviewed => false,
-              :language => "abc")
+              :language => "abc").index
 
     entries = Entry.search
     assert_equal Entry, entries.first.class
@@ -64,5 +64,28 @@ class VideoTest < ActiveSupport::TestCase
                   :language => "abc")
 
     assert_equal false, e.valid?
+  end
+
+  test "search :reviewed => false returns both reviewed and unreviewed" do
+    e = Entry.new(:transcription => "my transcription",
+                  :tags => "foo bar",
+                  :reviewed => false,
+                  :language => "abc")
+    e.index
+
+    entries = Entry.search(:reviewed => false)
+    assert entries.any? { |e| e.reviewed == false }
+  end
+
+  test "standard serch returns no unreviewed videos" do
+    e = Entry.new(:transcription => "my transcription",
+                  :tags => "foo bar",
+                  :reviewed => false,
+                  :language => "abc")
+    e.index
+
+    entries = Entry.search
+    puts entries.inspect
+    assert (entries.all? { |e| e.reviewed? })
   end
 end
