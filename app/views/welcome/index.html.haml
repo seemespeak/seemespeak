@@ -1,20 +1,22 @@
 .row-fluid
+  .row-fluid.page-header.text-center
+    %h1
+      = image_tag("logo.png", alt: "See Me Speak")
   .row-fluid
-    %h1 Welcome
-  .row-fluid
-    .span4.pull-right
+    .text-center.search-field
       = form_tag videos_path do
         .input-append
-          = text_field_tag :transcription
-          = button_tag "Search", :class => "btn"
-        .span.help-block
-          Go and look up a word...
+          = text_field_tag :transcription, nil, placeholder: "Go and look up a word..."
+          = button_tag "Search", class: "btn"
   .row-fluid
     .span6
-      %h3 Video of the Day
+      %h3 Learn a word today!
       %p.well
+      %p And now you know how to say #WORD# in #LANGUAGE#
     .span6
       %h3 About
       %p.lead
-        SeeMeSpeak is an application to easily record and view sign language words.
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no setakimata sanctus est Lorem ipsum dolor sit amet.
+        See Me Speak is a dictionary for sign language. You can easily
+        search for signs and even add missing ones with your webcam.
+      %p.lead
+        Currently we have #WORDS# videos available in the database.
