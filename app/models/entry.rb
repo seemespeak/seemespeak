@@ -42,8 +42,8 @@ class Entry
   include ActiveModel::Validations
 
   attribute :transcription, String
-  attribute :tags,          Array[String], :coercer => lambda { |input| input.split }
-  attribute :flags,         Array[String], :coercer => lambda { |input| input.split }
+  attribute :tags,          Array[String], :coercer => lambda { |input| String === input ? input.split : input }
+  attribute :flags,         Array[String], :coercer => lambda { |input| String === input ? input.split : input }
   attribute :reviewed,      Boolean, :default => false
   attribute :language,      String
   attribute :dialect,       String

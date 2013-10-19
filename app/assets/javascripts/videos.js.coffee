@@ -70,6 +70,9 @@ class RecordVideoView
     $("#camera-me").on "click", @turnOnCamera
     $("#record-me").on "click", @record
     #$("#stop-me").on "click", @stop
+    $("form#new_entry #upload_video").click (e) =>
+      e.preventDefault()
+      @submitVideo()
 
   record: =>
     @toggleActivateRecordButton()
@@ -84,6 +87,21 @@ class RecordVideoView
     #document.title = ORIGINAL_DOC_TITLE
     #@toggleActivateRecordButton()
 
+  submitVideo: ->
+    # Wrap video blob in FormData and post via $.ajax
+    # Challenge: Rails expects multipart/form+authenticity_token, we want to send Blob (requires XHR2)
+    # This is best of both worlds afaik.
+
+    newEntryForm = $("form#new_entry")
+    form = new FormData(newEntryForm) # Appends to form as if submitted via HTML
+    form.append "entry[video]", window.recorder.getBlob()
+    $.ajax
+      url: newEntryForm.attr "action"
+      type: newEntryForm.attr "method"
+      processData: false
+      contentType: false
+      data: form
+
 window.URL = window.URL or window.webkitURL
 window.requestAnimationFrame = window.requestAnimationFrame or window.webkitRequestAnimationFrame or window.mozRequestAnimationFrame or window.msRequestAnimationFrame or window.oRequestAnimationFrame
 window.cancelAnimationFrame = window.cancelAnimationFrame or window.webkitCancelAnimationFrame or window.mozCancelAnimationFrame or window.msCancelAnimationFrame or window.oCancelAnimationFrame
@@ -96,19 +114,3 @@ view = new RecordVideoView(window.recorder)
 
 $ ->
   view.bind()
-
-  newEntryForm = $("form#new_entry")
-  newEntryForm.find("#upload_video").click (e) ->
-    e.preventDefault()
-
-    # Wrap video blob in FormData and post via $.ajax
-    # Challenge: Rails expects multipart/form+authenticity_token, we want to send Blob (requires XHR2)
-    # This is best of both worlds afaik.
-    form = new FormData(newEntryForm) # Appends to form as if submitted via HTML
-    form.append "entry[video]", window.recorder.getBlob()
-    $.ajax
-      url: newEntryForm.attr "action"
-      type: newEntryForm.attr "method"
-      processData: false
-      contentType: false
-      data: form
