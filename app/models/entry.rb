@@ -10,6 +10,7 @@ class Entry
   attribute :reviewed,      Boolean, :default => false
   attribute :language,      String
   attribute :dialect,       String
+  attribute :copyright,     Copyright
   attribute :video,         Video
 
   validates_presence_of :transcription,
