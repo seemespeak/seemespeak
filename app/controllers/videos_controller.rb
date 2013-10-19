@@ -11,7 +11,8 @@ class VideosController < ApplicationController
   end
 
   def create
-
+    @entry = Entry.new(params[:entry])
+    redirect_to videos_path
   end
 
   def self.background_method(int)
