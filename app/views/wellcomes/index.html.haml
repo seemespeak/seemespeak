@@ -2,16 +2,19 @@
   .row-fluid
     %h1 Wellcome
   .row-fluid
-    = form_tag videos_path do
-      .input-append
-        = text_field_tag :transcription
-        = button_tag "Search", :class => "btn"
-    .row-fluid
-      .span6
-        %h3 Video of the Day
-        %p.well
-      .span6
-        %h3 About
-        %p.lead
-          SeeMeSpeak is an application to easily record and view sign language words.
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna   aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    .span4.pull-right
+      = form_tag videos_path do
+        .input-append
+          = text_field_tag :transcription
+          = button_tag "Search", :class => "btn"
+        .span.help-block
+          Go and look up a word...
+  .row-fluid
+    .span6
+      %h3 Video of the Day
+      %p.well
+    .span6
+      %h3 About
+      %p.lead
+        SeeMeSpeak is an application to easily record and view sign language words.
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no setakimata sanctus est Lorem ipsum dolor sit amet.
