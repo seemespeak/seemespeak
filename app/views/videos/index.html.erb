@@ -1,3 +1,23 @@
-<%= @entries.each do |e| %>
-  <%= e.inspect %>
-<% end %> 
+<section class="row-fluid">
+  <div class="span9">
+  	<%= @entries.in_groups_of(3) do |group| %>
+      <div class="row-fluid">
+      	<% group.each do |e| %>
+      	  <% if e.present? %>
+            <div class="span3">
+              <p>
+          	    <%= image_tag(asset_path('rails.png'), :class => "img-polaroid") %>
+          	  </p>
+          	  <p>
+          	    <%= e.transcription %>
+          	  </p>
+            </div>
+          <% end %>
+      	<% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="span3">
+    
+  </div>
+</section>
