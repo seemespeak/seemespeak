@@ -45,11 +45,6 @@ output
                  @transcoder.parse_avconv_info(avconv_string))
   end
 
-  def test_limit_size_for_smaller_values_with_resize
-    assert_equal(OpenStruct.new(width: 1280, height: 640),
-                 @transcoder.limit_size({width: 640, height: 320}, OpenStruct.new(width: 1280, height: 720), true))
-  end
-
   def test_limit_size_for_smaller_values
     assert_equal(OpenStruct.new(width: 640, height: 320),
                  @transcoder.limit_size({width: 640, height: 320}, OpenStruct.new(width: 1280, height: 720)))
