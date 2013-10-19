@@ -13,7 +13,7 @@
       = f.label flag
       = f.check_box flag
     = f.label :language
-    = f.text_field :language
+    = f.select :language, Entry::ALLOWED_LANGUAGES
     = f.label :dialect
     = f.text_field :dialect
     %fieldset#submits
