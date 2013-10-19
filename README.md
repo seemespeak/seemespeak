@@ -6,6 +6,8 @@ see me speak is an application to easily record and view sign language words.
 
 # Setup
 
+## App
+
 * Install JRuby 1.7.4 (avoid 1.7.5 for now, torquebox seems to have problems)
 * `bundle install`
 
@@ -22,3 +24,11 @@ Find you development logs in log/*.
 Autoreloading should work, reconfigurations need a restart which takes a bit longer than normal.
 
 See `torquebox.yml` for specific settings like queues.
+
+## elasticsearch
+
+Get and unzip elasticsearch 0.90.5: https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.5.zip
+
+Start:
+
+`bin/elasticsearch -f`
