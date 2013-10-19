@@ -21,6 +21,12 @@ class VideoTest < ActiveSupport::TestCase
   end
 
   test "search" do
+    Entry.new(:transcription => "my transcription",
+              :tags => "foo bar",
+              :flags => "vulgar",
+              :reviewed => false,
+              :language => "abc")
+
     entries = Entry.search
     assert_equal Entry, entries.first.class
   end

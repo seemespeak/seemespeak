@@ -4,6 +4,15 @@ module Concerns
   module Indexable
     extend ActiveSupport::Concern
 
+    class Query
+      include Virtus.model
+
+      attribute :language
+      attribute :flags
+      attribute :tags
+      attribute :query
+    end
+
     included do
       attribute :id, String
       attribute :version, Fixnum
