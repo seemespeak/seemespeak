@@ -54,4 +54,5 @@ Seemespeak::Application.routes.draw do
   #     resources :products
   #   end
   resources :videos
+  root      to: "wellcomes#index"
 end

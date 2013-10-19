@@ -1,0 +1,2 @@
+module WellcomesHelper
+end
