@@ -2,6 +2,21 @@ require 'active_support/concern'
 
 module Concerns
   module Indexable
+    class ResultList
+      include Enumerable
+
+      attr_accessor :results
+      attr_accessor :total
+
+      def initialize(results, total)
+        self.results = results
+      end
+
+      def each(*args, &block)
+        results.each(*args, &block)
+      end
+    end
+
     extend ActiveSupport::Concern
 
     included do
@@ -42,20 +57,25 @@ module Concerns
       #   @option ignored_flags Flags to ignore
       #   @option tags Tags to filter by
       #   @option random A random seed to randomize the result list by
+      #   @option size how many items to get
+      #   @option from number of items to scroll into the list
       def search(args = {})
         query = self::Query.new(args)
         args[:body] = query.to_hash
 
         args[:index] = configuration.index
         args[:type] = type
+
         result = client.search args
 
-        result["hits"]["hits"].map do |item|
+        result_list = result["hits"]["hits"].map do |item|
           model = new(item["_source"])
           model.id = item["_id"]
           model.version = item["_version"]
           model
         end
+
+        ResultList.new(result_list, result["hits"]["total"])
       end
 
       def count(args = {})
