@@ -3,8 +3,9 @@
     %h1 Wellcome
   .row-fluid
     = form_tag videos_path do
-      = text_field_tag :transcription
-      = submit_tag "Find"
+      .input-append
+        = text_field_tag :transcription
+        = button_tag "Search", :class => "btn"
     .row-fluid
       .span6
         %h3 Video of the Day
