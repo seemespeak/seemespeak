@@ -9,6 +9,8 @@ VIDEO_OPTIONS =
 class Recorder
   setBlob: (blob) =>
     @blob = blob
+  getBlob: =>
+    @blob
 
   assertSourceSet: ->
     throw new Error("Recorder's source isn't set. Call captureFrom first.") unless @mediaRecorder?
@@ -89,6 +91,24 @@ navigator.getUserMedia = navigator.getUserMedia or navigator.webkitGetUserMedia 
 
 ORIGINAL_DOC_TITLE = document.title
 
-view = new RecordVideoView(new Recorder())
+window.recorder = new Recorder()
+view = new RecordVideoView(window.recorder)
+
 $ ->
   view.bind()
+
+  newEntryForm = $("form#new_entry")
+  newEntryForm.find("#upload_video").click (e) ->
+    e.preventDefault()
+
+    # Wrap video blob in FormData and post via $.ajax
+    # Challenge: Rails expects multipart/form+authenticity_token, we want to send Blob (requires XHR2)
+    # This is best of both worlds afaik.
+    form = new FormData(newEntryForm) # Appends to form as if submitted via HTML
+    form.append "entry[video]", window.recorder.getBlob()
+    $.ajax
+      url: newEntryForm.attr "action"
+      type: newEntryForm.attr "method"
+      processData: false
+      contentType: false
+      data: form

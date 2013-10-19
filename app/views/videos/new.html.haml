@@ -4,7 +4,7 @@
     %button#camera-me= t "turn_on_camera"
     %button#record-me{ data: {recording_label: t("recording"), record_label: t("record")} }= t "record"
   %video#live{autoplay: "", height: "480", width: "640"}
-  = form_for(@entry, url: videos_path(@entry)) do |f|
+  = form_for @entry, url: videos_path(@entry) do |f|
     = f.label :transcription
     = f.text_field :transcription
     = f.label :tags
@@ -15,4 +15,6 @@
     = f.text_field :language
     = f.label :dialect
     = f.text_field :dialect
-    = f.button :submit
+    %fieldset#submits
+      = f.button "Upload video", id: :upload_video
+      = f.button :submit
