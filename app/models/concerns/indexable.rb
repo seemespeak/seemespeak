@@ -43,14 +43,17 @@ module Concerns
       end
 
       def search(args = {})
+        query = Query.new(args)
+        args[:query] = query.to_hash
+
         args[:index] = configuration.index
         args[:type] = type
         result = client.search args
 
         result["hits"]["hits"].map do |item|
           model = new(item["_source"])
-          id = item["_id"]
-          version = item["_version"]
+          model.id = item["_id"]
+          model.version = item["_version"]
           model
         end
       end
