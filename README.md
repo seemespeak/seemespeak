@@ -1,5 +1,9 @@
 Welcome to the repo of see me speak!
 
+# What?
+
+see me speak is an application to easily record and view sign language words.
+
 # Setup
 
 * Install JRuby 1.7.4 (avoid 1.7.5 for now, torquebox seems to have problems)
