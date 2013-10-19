@@ -1,0 +1,19 @@
+.row-fluid
+  .row-fluid.page-header.text-center
+    %h1
+      = image_tag("logo.png", alt: "See Me Speak")
+
+%section.row-fluid
+  %legend
+    Results for: #{params[:transcription]}
+  .span9
+    = @entries.in_groups_of(3) do |group|
+      .row-fluid
+        - group.each do |e|
+          - if e.present?
+            .span3
+              %p
+                = link_to(image_tag(asset_path('rails.png'), :class => "img-polaroid"), video_path(e))
+              %p
+                = e.transcription
+  .span3
