@@ -32,6 +32,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# twitter-bootstrap as a gem
+gem 'twitter-bootstrap-rails'
+
+# js runtime gem
+gem 'therubyrhino'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
