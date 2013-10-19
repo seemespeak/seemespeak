@@ -5,8 +5,8 @@ class Entry
   include ActiveModel::Conversion
 
   attribute :transcription, String
-  attribute :tags,          Array[String]
-  attribute :flags,         Array[String]
+  attribute :tags,          Array, :coercer => lambda { |input| input.split }
+  attribute :flags,         Array, :coercer => lambda { |input| input.split }
   attribute :reviewed,      Boolean, :default => false
   attribute :language,      String
   attribute :dialect,       String
