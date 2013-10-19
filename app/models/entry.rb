@@ -13,7 +13,7 @@ class Entry
 
     def to_hash
       if phrase
-        query = { :match => { :transcription => query } }
+        query = { :match => { :transcription => phrase } }
       else
         query = { :match_all => {} }
       end

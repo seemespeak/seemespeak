@@ -77,7 +77,7 @@ class VideoTest < ActiveSupport::TestCase
     assert entries.any? { |e| e.reviewed == false }
   end
 
-  test "standard serch returns no unreviewed videos" do
+  test "standard search returns no unreviewed videos" do
     e = Entry.new(:transcription => "my transcription",
                   :tags => "foo bar",
                   :reviewed => false,
