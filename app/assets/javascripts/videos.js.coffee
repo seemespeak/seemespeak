@@ -95,7 +95,7 @@ class RecordVideoView
     # This is best of both worlds afaik.
 
     newEntryForm = $("form#new_entry")
-    form = new FormData(newEntryForm) # Appends to form as if submitted via HTML
+    form = new FormData(newEntryForm[0]) # Appends to form as if submitted via HTML
     form.append "entry[video]", window.recorder.getBlob()
     $.ajax
       url: newEntryForm.attr "action"
