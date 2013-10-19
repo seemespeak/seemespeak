@@ -4,7 +4,7 @@ class VideosController < ApplicationController
   always_background :background_method
 
   def index
-    @entries = Entry.search(:transcription => params[:transcription])
+    @entries = Entry.search#(:transcription => params[:transcription])
   end
 
   def new
