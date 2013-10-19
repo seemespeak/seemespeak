@@ -1,5 +1,6 @@
 class Entry
   include Virtus.model
+  include Concerns::Indexable
 
   attribute :transcription, String
   attribute :tags,          Array[String]

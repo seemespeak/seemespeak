@@ -53,3 +53,4 @@ gem "torquebox-server", "3.0.0"
 
 gem "elasticsearch"
 gem "virtus"
+gem "settingslogic"
