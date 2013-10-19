@@ -20,16 +20,16 @@ class VideoTest < ActiveSupport::TestCase
     assert_equal e.tags, ["funny", "tags"]
   end
 
-  test "search" do
-    Entry.new(:transcription => "my transcription",
-              :tags => "foo bar",
-              :flags => "vulgar",
-              :reviewed => false,
-              :language => "abc")
-
-    entries = Entry.search
-    assert_equal Entry, entries.first.class
-  end
+#  test "search" do
+#    Entry.new(:transcription => "my transcription",
+#              :tags => "foo bar",
+#              :flags => "vulgar",
+#              :reviewed => true,
+#              :language => "abc").index
+#
+#    entries = Entry.search
+#    assert_equal Entry, entries.first.class
+#  end
 
   test "an empty entry is not valid" do
     e = Entry.new()
@@ -64,5 +64,28 @@ class VideoTest < ActiveSupport::TestCase
                   :language => "abc")
 
     assert_equal false, e.valid?
+  end
+
+  test "search :reviewed => false returns both reviewed and unreviewed" do
+    e = Entry.new(:transcription => "my transcription",
+                  :tags => "foo bar",
+                  :reviewed => false,
+                  :language => "abc")
+    e.index
+
+    entries = Entry.search(:reviewed => false)
+    assert entries.any? { |e| e.reviewed == false }
+  end
+
+  test "standard search returns no unreviewed videos" do
+    e = Entry.new(:transcription => "my transcription",
+                  :tags => "foo bar",
+                  :reviewed => false,
+                  :language => "abc")
+    e.index
+
+    entries = Entry.search
+    puts entries.inspect
+    assert (entries.all? { |e| e.reviewed? })
   end
 end

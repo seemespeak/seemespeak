@@ -4,15 +4,6 @@ module Concerns
   module Indexable
     extend ActiveSupport::Concern
 
-    class Query
-      include Virtus.model
-
-      attribute :language
-      attribute :flags
-      attribute :tags
-      attribute :query
-    end
-
     included do
       attribute :id, String
       attribute :version, Fixnum
@@ -42,15 +33,26 @@ module Concerns
         name.underscore
       end
 
+      ##
+      # Search using a query object
+      #
+      # @options args
+      #   @option phrase The phrase to search for
+      #   @option reviewed Whether to only display reviewed material. Default: true
+      #   @option ignored_flags Flags to ignore
+      #   @option tags Tags to filter by
       def search(args = {})
+        query = self::Query.new(args)
+        args[:body] = query.to_hash
+
         args[:index] = configuration.index
         args[:type] = type
         result = client.search args
 
         result["hits"]["hits"].map do |item|
           model = new(item["_source"])
-          id = item["_id"]
-          version = item["_version"]
+          model.id = item["_id"]
+          model.version = item["_version"]
           model
         end
       end
