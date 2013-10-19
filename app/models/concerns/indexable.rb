@@ -8,9 +8,34 @@ module Concerns
       include Virtus.model
 
       attribute :language
-      attribute :flags
-      attribute :tags
-      attribute :query
+      attribute :ignored_flags, Array[String] # the ignored flags
+      attribute :tags, Array[String] # interesting tags
+      attribute :phrase, String
+      attribute :reviewed, :default => true
+
+      def to_hash
+        if phrase
+          query = { :match => { :transcription => query } }
+        else
+          query = { :match_all => {} }
+        end
+
+        bool = Hash.new { |h,k| h[k] = [] }
+
+        if reviewed
+          bool[:must] << { :term => { :reviewed => true } }
+        end
+
+        if ignored_flags
+          bool[:must_not] << { :terms => { :flags => ignored_flags } }
+        end
+
+        if tags && !tags.empty?
+          bool[:must] << { :terms => { :tags => tags } }
+        end
+
+        { :query => query, :filter => bool }
+      end
     end
 
     included do

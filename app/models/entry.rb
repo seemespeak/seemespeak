@@ -4,12 +4,12 @@ class Entry
 
   include Virtus.model
   include Concerns::Indexable
-  include ActiveModel::Validations
   include ActiveModel::Conversion
+  include ActiveModel::Validations
 
   attribute :transcription, String
-  attribute :tags,          Array[String], :coercer => lambda { |input| input.split }, :default => []
-  attribute :flags,         Array[String], :coercer => lambda { |input| input.split }, :default => []
+  attribute :tags,          Array[String], :coercer => lambda { |input| input.split }
+  attribute :flags,         Array[String], :coercer => lambda { |input| input.split }
   attribute :reviewed,      Boolean, :default => false
   attribute :language,      String
   attribute :dialect,       String
