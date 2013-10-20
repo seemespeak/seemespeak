@@ -23,7 +23,7 @@ def mark_as_moderated
 
   entry = Entry.get(params[:id])
 
-  entry.reviewed = false
+  entry.reviewed = true
   
   if entry.index
     redirect_to reviews_path, :notice => "Video has been successfully marked as 'modereated'."

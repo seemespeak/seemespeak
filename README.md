@@ -28,6 +28,9 @@ See `torquebox.yml` for specific settings like queues.
 Admin credential file:
 rename `config/admin_settings_example.yml` to `config/admin_settings.yml`
 
+## Admin section
+located under `/reviews`. 
+
 ## Seed
 get some seed data by running 
 * `rake seed:entries`
