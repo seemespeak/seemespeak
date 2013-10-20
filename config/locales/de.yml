@@ -51,3 +51,14 @@ nach Gebärden suchen oder sogar selbst welche aufnehmen!"
     labels:
       video:
         length: Aufnahmelänge
+      entry:
+        transcription: Transkribiere diese Geste
+        tags: Tags (z.B. witzig)
+        insult: Dieses Wort ist eine Beleidigung
+        vulgar: Dieses Wort ist vulgär
+        casual: Das ist Umgangssprache
+        dialect: Ist das ein Dialekt?
+      copyright:
+        author: Dein Name
+        link: Deine Webseite
+        license_accepted: Ich veröffentliche diese Video unter <a href="http://creativecommons.org/licenses/by-sa/3.0/">cc-by-sa 3.0</a>
