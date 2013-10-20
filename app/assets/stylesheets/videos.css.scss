@@ -11,6 +11,18 @@
   }
 }
 
+.search-field .more-options {
+  margin-left: 5px;
+}
+
+.expert-search {
+  display: none;
+  label.checkbox {
+    padding-left: 0px;
+    padding-right: 10px;
+  }
+}
+
 .not-found {
   margin: 20px;
 }

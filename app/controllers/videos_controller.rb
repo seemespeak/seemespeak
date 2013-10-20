@@ -8,6 +8,21 @@ class VideosController < ApplicationController
     filter = {:phrase => params[:transcription]}   if params[:transcription].present?
     filter = filter.merge({:tags => params[:tag]}) if params[:tag].present?
 
+    if !params["old_moderated"].nil? && params["moderated"].nil?
+      params["moderated"] = 0
+    end
+
+    if params["moderated"] == 0 || params["moderated"].nil?
+      filter[:reviewed] = false
+    end
+
+    flags = Entry::ALLOWED_FLAGS.clone
+    Entry::ALLOWED_FLAGS.each do |flag|
+      flags.delete(flag) if params[flag] == "1"
+    end
+    filter["ignored_flags"] = flags unless flags.empty?
+
+    Rails.logger.debug filter
     @entries = Entry.search(filter)
   end
 

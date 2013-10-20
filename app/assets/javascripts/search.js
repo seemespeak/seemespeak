@@ -4,4 +4,10 @@ $(function() {
       e.preventDefault();
     }
   });
+
+  $("#search_form .more-options").click(function() {
+    $(this).hide();
+    $(".expert-search").show();
+  });
+
 });
