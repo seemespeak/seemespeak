@@ -16,7 +16,7 @@
       .well.lead
         = render partial: "videos/video", locals: {entry: @random_entry}
         .text
-          And now you know how to say <strong>#{@random_entry.transcription} (#{sign_translate(@random_entry.transcription, @random_entry.language)})</strong> in <strong>#{link_to_language(@random_entry.language)}</strong>
+          And now you know how to say <strong>#{sign_translate(@random_entry)}</strong> in <strong>#{link_to_language(@random_entry.language)}</strong>
         - if @random_entry.copyright
           .copyright
             (
