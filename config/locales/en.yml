@@ -43,9 +43,9 @@ en:
     record_new: "Record a new video for %{transcription}"
     unavailable: You could record a new one if you use Google Chrome.
   welcome:
-    show_all: Show me all of them!
+    show_all: Just show me all you have!
     record: Record a new one!
-    unavailable: Recording is only available in Google Chrome currently
+    unavailable: You need Google Chrome for recording
     learn_a_word: Learn a word today!
     now_you_know: And now you know how to say
     teach_me: Teach me another one!

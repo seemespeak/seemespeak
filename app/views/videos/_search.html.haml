@@ -3,3 +3,9 @@
     .input-append
       = text_field_tag :transcription, params[:transcription], placeholder: t(:placeholder, :scope => :search), autofocus: "autofocus"
       = button_tag t(:search, :scope => :search), class: "btn"
+    %span
+      = t(:or, :scope => :general)
+    %a.btn.btn-primary.recording_only{href: new_video_path}
+      = t(:record, :scope => :welcome)
+    .btn.no_recording.hidden{disabled: "disabled"}
+      = t(:unavailable, :scope => :welcome)
