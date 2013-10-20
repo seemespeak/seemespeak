@@ -13,7 +13,7 @@ class VideoTranscoder
     return false unless File.exist?(source)
 
     Tempfile.open(['image', '.png']) do |f|
-      `avconv -y -i #{source} -t 1 -vframes 1 -f image2 #{Shellwords.shellescape(f.path)}`
+      `avconv -y -i #{source} -ss 2 -vframes 1 -f image2 #{Shellwords.shellescape(f.path)}`
       if ![0,11,256].include?($?.exitstatus)
         return false
       end
