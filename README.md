@@ -25,6 +25,12 @@ Autoreloading should work, reconfigurations need a restart which takes a bit lon
 
 See `torquebox.yml` for specific settings like queues.
 
+Admin credential file:
+rename 
+*config/admin_settings_example.yml 
+to 
+*admin_settings.yml
+
 ## Seed
 get some seed data by running 
 * `rake seed:entries`
