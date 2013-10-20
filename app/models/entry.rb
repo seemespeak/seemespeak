@@ -56,8 +56,10 @@ class Entry
 
   def initialize(hash = {})
     unless hash[:flags] || hash["flags"]
-      flag_keys = hash.keys.reject { |key| !ALLOWED_FLAGS.include?(key.to_s) }
-      hash[:flags] = flag_keys
+      hash[:flags] = []
+      ALLOWED_FLAGS.each do |flag|
+        hash[:flags] << flag if hash[flag] && hash[flag] != "0"
+      end
     end
     super(hash)
   end
