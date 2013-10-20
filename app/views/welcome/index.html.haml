@@ -10,7 +10,7 @@
           = button_tag "Search", class: "btn"
       %a.btn.recording_only{href: new_video_path}
         Or record a new one
-      .btn.no_recording{disabled: "disabled"}
+      .btn.no_recording.hidden{disabled: "disabled"}
         Recording is only available in Google Chrome currently
 
   .row-fluid
