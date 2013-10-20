@@ -6,6 +6,7 @@
 .row-fluid
   .span2
   .span8
+    %h3= sign_translate(@entry)
     = render partial: "videos/entry", locals: {entry: @entry}
 
 
