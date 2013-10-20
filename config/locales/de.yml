@@ -1,7 +1,10 @@
 de:
   turn_on_camera: Kamera anschalten
   record: Aufnehmen
-  recording: Nehme auf...
+  recording: Nehme auf ...
+  record_again: >
+    Fertig!
+    Erneut versuchen?
 
   languages:
     dgs:
