@@ -52,7 +52,7 @@ class VideosController < ApplicationController
 
       VideosController.generate_video(@entry.id, file.path)
 
-      redirect_to videos_path
+      head :ok
     else
       response.status = 422
       response_body = { :errors => @entry.errors.full_messages }

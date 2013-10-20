@@ -86,8 +86,9 @@
       contentType: false
       data: form
       success: =>
-        # TODO transfer to search
-        #@leaveStateTransferring()
-      error:
         @leaveStateTransferring()
-        # TODO flash message / errors
+        window.location = "/?upload=success"
+      error: (jqXHR, textStatus, errorThrown) =>
+        @leaveStateTransferring()
+        message = if jqXHR.responseJSON? then jqXHR.responseJSON.errors.join('<br>') else 'An unknown error occured. Please try again later'
+        $('#flash-messages').html("<div class='alert fade in alert-error'><button class='close' data-dismiss='alert'>×</button>#{message}</div>")

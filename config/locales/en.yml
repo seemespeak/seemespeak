@@ -72,6 +72,7 @@ german sign language? Just go ahead!"
   record_again: >
     Done.
     Try Again?
+  upload_success: Thank you for submitting your video! It will be available soon after being reviewed.
 
   languages:
     dgs:

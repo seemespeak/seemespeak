@@ -26,3 +26,7 @@ footer {
 .row-standout {
 	padding-bottom: 40px; // Same as bootstrap's page-header
 }
+
+#flash-messages {
+	position: absolute;
+}
