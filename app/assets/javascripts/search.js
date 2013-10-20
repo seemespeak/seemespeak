@@ -1,4 +1,4 @@
-$(function() {
+$(document).on("ready page:load", function() {
   $("#search_form").submit(function (e) {
     if ($("#transcription").val().length == 0) {
       e.preventDefault();
