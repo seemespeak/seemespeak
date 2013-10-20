@@ -1,0 +1,15 @@
+# config/application.yml
+defaults: &defaults
+  user: admin
+
+development:
+  <<: *defaults
+  password: secret
+
+test:
+  <<: *defaults
+  index: test
+
+production:
+  <<: *defaults
+  index: change_me
