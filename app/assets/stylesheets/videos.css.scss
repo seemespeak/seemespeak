@@ -3,4 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #video_popup{
   margin-top: 0px !important;
+
+  .modal-body {
+    max-height: 500px;
+  }
+
 }
