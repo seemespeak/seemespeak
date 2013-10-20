@@ -28,10 +28,12 @@
     = javascript_include_tag "application"
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
     .container-fluid
-      %a{href: "language/en"}
-        EN
-      %a{href: "language/de"}
-        DE
+      - if I18n.locale == :de
+        %a{href: "language/en"}
+          EN
+      - else
+        %a{href: "language/de"}
+          DE
     .container-fluid
       .row-fluid
         .span12
