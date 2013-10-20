@@ -75,7 +75,7 @@ class RecordVideoView
       @submitVideo()
 
   record: =>
-    captureDuration = $("select[name='entry[video][length]']").val()
+    captureDuration = parseInt($("select[name='entry[video][length]']").val(), 0) * 1000
     @recorder.captureSpan captureDuration, =>
       @toggleActivateRecordButton()
       alert "Success!"
