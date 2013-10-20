@@ -11,4 +11,9 @@ module VideosHelper
   		["#{length} #{t :seconds}", length]
   	end
   end
+
+  def search_result_header
+  	return "#{params[:transcription]} (word)" if params[:transcription].present?
+    return "#{params[:tag]} (tag)"             if params[:tag].present?
+  end
 end
