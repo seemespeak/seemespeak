@@ -54,7 +54,8 @@ search for signs and even add missing ones with your webcam.
 
 Words that are not in your chosen language will be translated for you. Want to learn
 german sign language? Just go ahead!"
-    database_text: "Currently we have %{entries} videos available in the database."
+    database_text: "Currently we have %{entries} videos available in the database." 
+    help_text: "We need your help! We currently have almost no content for american and british sign language and would be delighted if you could donate some. Record your own words here or contact us on Twitter (@seemespeakdict) if you can donate a corpus."
   flags:
     insult: insults 
     casual: casual language

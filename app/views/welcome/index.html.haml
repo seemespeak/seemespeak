@@ -40,3 +40,5 @@
         = t(:about_text, :scope => :welcome)
       %p.lead
         = t(:database_text, :scope => :welcome) % {entries: Entry.count}
+      %p.lead
+        = t(:help_text, :scope => :welcome) % {entries: Entry.count}
