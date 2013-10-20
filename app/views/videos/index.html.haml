@@ -19,9 +19,9 @@
             = check_box_tag flag, 1, params[flag] == "1"
             = label_tag flag, flag, class: "checkbox inline"
         .row-fluid
-          %input{name:"old_moderated", type: "hidden", value: params["moderated"]}
-          = check_box_tag "moderated", 1, params["moderated"].nil? || params["moderated"] == "1"
-          = label_tag "moderated", "moderated", class: "checkbox inline"
+          %input{name:"old_reviewed", type: "hidden", value: params["reviewed"]}
+          = check_box_tag "reviewed", 1, params["reviewed"] == 1
+          = label_tag "reviewed", "reviewed", class: "checkbox inline"
       .span3
 %section.row-fluid
   - if @entries.count > 0

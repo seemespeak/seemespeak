@@ -11,21 +11,19 @@ class VideosController < ApplicationController
     filter = filter.merge({:random => Integer(params[:random])})  if params[:random].present?
     filter = filter.merge({:size => 9})
 
-    if !params["old_moderated"].nil? && params["moderated"].nil?
-      params["moderated"] = 0
+    if params["old_reviewed"].nil? || params["reviewed"] == "1" || (params["old_reviewed"] == 1 && params["reviewed"].nil?)
+      params["reviewed"] = 1
+    else
+      params["reviewed"] = 0
     end
 
-    if params["moderated"] == 0 || params["moderated"].nil?
-      filter[:reviewed] = false
-    end
+    filter[:reviewed] = params["reviewed"] == 1
 
     flags = Entry::ALLOWED_FLAGS.clone
     Entry::ALLOWED_FLAGS.each do |flag|
       flags.delete(flag) if params[flag] == "1"
     end
     filter["ignored_flags"] = flags unless flags.empty?
-
-    Rails.logger.debug filter
     @entries = Entry.search(filter)
   end
 
