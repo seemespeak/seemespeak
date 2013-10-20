@@ -26,6 +26,7 @@ module Concerns
       FileUtils.move(file, File.join(target_dir, "original.webm"))
 
       entry.video.converted = success
+      entry.index
     end
   end
 end
