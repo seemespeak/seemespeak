@@ -42,3 +42,14 @@ en:
     labels:
       video:
         length: Recording duration
+      entry:
+        transcription: Translate the gesture(s)
+        tags: Tags (e.g. funny)
+        insult: This word is an insult
+        vulgar: This word is vulgar
+        casual: This word is casual
+        dialect: If any, which dialect is this in?
+      copyright:
+        author: Your name
+        link: Your homepage
+        license_accepted: I release this video under <a href="http://creativecommons.org/licenses/by-sa/3.0/">cc-by-sa 3.0</a>
