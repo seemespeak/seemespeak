@@ -16,3 +16,7 @@
 footer {
   margin: 20px 10px;
 }
+
+.row-standout {
+	padding-bottom: 40px; // Same as bootstrap's page-header
+}
