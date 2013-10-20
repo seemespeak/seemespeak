@@ -16,7 +16,10 @@
           <li><b>Dialect:</b> <%= entry.dialect %></li>
           <li><b>Copyright:</b> <%= entry.copyright.nil? ? "" : link_to(entry.copyright.author, entry.copyright.links) %></li>
           <li>
-            <b>Tags: </b>  <%= entry.tags.map{ |e| content_tag(:span, e, :class => "label") } %>
+            <b>Tags: </b> 
+            <% entry.tags.each do |e| %>
+              <%= link_to_videos_with_tag(e) %>
+            <% end %>
           </li>
         </ul>
       </div>

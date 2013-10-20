@@ -4,7 +4,11 @@ class VideosController < ApplicationController
   always_background :generate_video
 
   def index
-    @entries = Entry.search(:phrase => params[:transcription])
+    filter = {}
+    filter = {:phrase => params[:transcription]}   if params[:transcription].present?
+    filter = filter.merge({:tags => params[:tag]}) if params[:tag].present?
+
+    @entries = Entry.search(filter)
   end
 
   def new
