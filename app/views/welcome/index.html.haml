@@ -19,16 +19,16 @@
       .well.lead
         = render partial: "videos/video", locals: {entry: @random_entry}
         .text
-          And now you know how to say <strong>#{@random_entry.transcription}</strong> in <strong>#{link_to_language(@random_entry.language)}</strong>
-        .copyright
-          (
-          - if @random_entry.copyright
+          And now you know how to say <strong>#{@random_entry.transcription} (#{sign_translate(@random_entry.transcription, @random_entry.language)})</strong> in <strong>#{@random_entry.language}</strong>
+        - if @random_entry.copyright
+          .copyright
+            (
             By
             - if @random_entry.copyright.link.present?
               = link_to @random_entry.copyright.author, @random_entry.copyright.link
             - else
               = @random_entry.copyright.author
-          )
+            )
     .span6
       %h3 About
       %p.lead
