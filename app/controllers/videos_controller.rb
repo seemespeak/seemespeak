@@ -28,7 +28,7 @@ class VideosController < ApplicationController
   end
 
   def new
-    @entry = Entry.new(:copyright => Copyright.new())
+    @entry = Entry.new(:copyright => Copyright.new(), transcription: params[:transcription])
   end
 
   def show

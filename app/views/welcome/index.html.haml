@@ -7,8 +7,9 @@
       = render partial:"videos/search"
       %a.btn{href: videos_path(random: rand(2000))}
         Show me all of them!
-      %a.btn.recording_only{href: new_video_path}
-        Or record a new one
+      %span or
+      %a.btn.btn-primary.recording_only{href: new_video_path}
+        Record a new one
       .btn.no_recording.hidden{disabled: "disabled"}
         Recording is only available in Google Chrome currently
 

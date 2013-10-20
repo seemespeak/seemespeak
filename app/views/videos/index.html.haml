@@ -52,8 +52,9 @@
           %h3 Sorry, we haven't found a video for "#{params[:transcription]}".
       .row-fluid
         .text-center
-          %a.btn.recording_only{href: new_video_path}
-            Record a new one.
+          %a.btn.btn-primary.btn-large.recording_only{href: new_video_path(Entry, transcription: params[:transcription])}
+            Record a new video for
+            %em= params[:transcription]
           .btn.no_recording.hidden{disabled: "disabled"}
             You could record a new one if you use Google Chrome.
 
