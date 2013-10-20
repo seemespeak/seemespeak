@@ -7,7 +7,7 @@
   </div>
   <div class="modal-body">
     <div class="row-fluid">
-      <%= video_tag("http://rumble.seemespeak.org/videofiles/Festplatte.webm", :id => "the_video") %>
+      <%= render partial: "videos/video", locals: {entry: entry} %>
     </div>
   </div>
   <div class="modal-footer">

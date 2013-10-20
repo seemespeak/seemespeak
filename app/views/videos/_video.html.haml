@@ -1,0 +1,3 @@
+%video{height: "100%", width: "100%", controls: "controls", loop: "loop", poster: entry.posterframe}
+  - entry.video_urls.each do |key, value|
+    %source{src: value, type: key}
