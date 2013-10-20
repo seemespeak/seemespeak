@@ -5,8 +5,9 @@ class VideosController < ApplicationController
 
   def index
     filter = {}
-    filter = {:phrase => params[:transcription]}   if params[:transcription].present?
-    filter = filter.merge({:tags => params[:tag]}) if params[:tag].present?
+    filter = {:phrase => params[:transcription]}    if params[:transcription].present?
+    filter = filter.merge({:tags => params[:tag]})  if params[:tag].present?
+    filter = filter.merge({:from => params[:from]}) if params[:from].present?
 
     @entries = Entry.search(filter)
   end

@@ -23,6 +23,7 @@
                 %p
                   = e.dialect
       .span3
+      = render partial: "videos/pagination", locals: { entries: @entries }
   - else
     .not-found
       .row-fluid
