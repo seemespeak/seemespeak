@@ -20,6 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  activemodel:
+    errors:
+      models:
+        entry:
+          attributes:
+            tags:
+              blank: 'cannot be empty'
+        copyright:
+          attributes:
+            author:
+              blank: 'cannot be empty'
+            license_accepted:
+              blank: 'cannot be empty'
   search:
     placeholder: "Go and look up a word"
     search: "Search"

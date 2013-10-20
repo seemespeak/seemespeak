@@ -1,4 +1,18 @@
 de:
+  activemodel:
+    errors:
+      models:
+        entry:
+          attributes:
+            tags:
+              blank: 'darf nicht leer sein'
+        copyright:
+          attributes:
+            author:
+              blank: 'darf nicht leer sein'
+            license_accepted:
+              blank: 'darf nicht leer sein'
+
   search:
     placeholder: "Such dir ein Wort aus..."
     search: "Suchen"
@@ -9,7 +23,7 @@ de:
     record_new: "Nimm ein Video für %{transcription} auf!"
     unavailable: Aufnahme von neuen Videos geht momentan leider nur in Google Chrome
   flags:
-    insult: Beleidigungen 
+    insult: Beleidigungen
     casual: Umgangssprache
     vulgar: Vulgärsprache
     reviewed: nur überprüfte Einträge
