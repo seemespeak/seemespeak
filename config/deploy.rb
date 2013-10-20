@@ -19,4 +19,13 @@ ssh_options[:forward_agent] = false
 
 role :web,  "rumble.seemespeak.org", :primary => true 
 
+set :config_files, ['admin_settings.yml']
 
+namespace :deploy do
+  task :symlink_config, roles: :web do
+    config_files.each do |filename|
+      run "cp #{shared_path}/config/#{filename} #{release_path}/config/#{filename}"
+    end
+  end
+  after "deploy:finalize_update", "deploy:symlink_config"
+end

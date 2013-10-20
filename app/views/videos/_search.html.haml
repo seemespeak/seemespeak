@@ -1,5 +1,5 @@
 .text-center.search-field
   = form_tag(videos_path, :method => :get, id: "search_form") do
     .input-append
-      = text_field_tag :transcription, params[:transcription], placeholder: "Go and look up a word...", autofocus: "autofocus"
-      = button_tag "Search", class: "btn"
+      = text_field_tag :transcription, params[:transcription], placeholder: t(:placeholder, :scope => :search), autofocus: "autofocus"
+      = button_tag t(:search, :scope => :search), class: "btn"

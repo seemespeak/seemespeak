@@ -6,35 +6,37 @@
     .text-center.search-field
       = render partial:"videos/search"
       %a.btn{href: videos_path(random: rand(2000))}
-        Show me all of them!
-      %span or
+        = t(:show_all, :scope => :welcome)
+      %span
+        = t(:or, :scope => :general)
       %a.btn.btn-primary.recording_only{href: new_video_path}
-        Record a new one
+        = t(:record, :scope => :welcome)
       .btn.no_recording.hidden{disabled: "disabled"}
-        Recording is only available in Google Chrome currently
+        = t(:unavailable, :scope => :welcome)
 
   .row-fluid
     .span6
-      %h3 Learn a word today!
+      %h3
+        = t(:learn_a_word, :scope => :welcome)
       .well.lead
         = render partial: "videos/video", locals: {entry: @random_entry}
         .text
-          And now you know how to say <strong>#{sign_translate(@random_entry)}</strong> in <strong>#{link_to_language(@random_entry.language)}</strong>
+          #{t(:now_you_know, :scope => :welcome)} <strong>#{sign_translate(@random_entry)}</strong> in <strong>#{link_to_language(@random_entry.language)}</strong>
         - if @random_entry.copyright
           .copyright
             (
-            By
+            #{t(:by, :scope => :general)}
             - if @random_entry.copyright.link.present?
               = link_to @random_entry.copyright.author, @random_entry.copyright.link
             - else
               = @random_entry.copyright.author
             )
         %a{href: "/"}
-          Teach me another one!
+          = t(:teach_me, :scope => :welcome)
     .span6
-      %h3 About
+      %h3
+        = t(:about, :scope => :general)
       %p.lead
-        See Me Speak is a dictionary for sign language. You can easily
-        search for signs and even add missing ones with your webcam.
+        = t(:about_text, :scope => :welcome)
       %p.lead
-        Currently we have #{Entry.count} videos available in the database.
+        = t(:database_text, :scope => :welcome) % {entries: Entry.count}

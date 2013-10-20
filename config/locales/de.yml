@@ -1,4 +1,21 @@
 de:
+  search:
+    placeholder: "Such dir ein Wort aus..."
+    search: "Suchen"
+  welcome:
+    show_all: Zeig mir alle!
+    record: Nimm selbst was auf!
+    unavailable: Leider funktioniert aufnehmen gerade nur in Google Chrome
+    learn_a_word: Wort des Tages
+    now_you_know: Jetzt kennst du
+    teach_me: Bring mir ein anderes bei!
+    about_text: "See Me Speak ist ein Wörterbuch für Gebärdensprachen. Du kannst
+nach Gebärden suchen oder sogar selbst welche aufnehmen!"
+    database_text: "Wir haben momentan %{entries} videos in der Datenbank."
+  general:
+    or: oder
+    by: von
+    about: Über
   turn_on_camera: Kamera anschalten
   record: Aufnehmen
   recording: Nehme auf ...
