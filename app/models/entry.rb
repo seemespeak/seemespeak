@@ -55,7 +55,7 @@ class Entry
   include ActiveModel::Validations
 
   def initialize(hash = {})
-    unless hash[:flags]
+    unless hash[:flags] || hash["flags"]
       flag_keys = hash.keys.reject { |key| !ALLOWED_FLAGS.include?(key.to_s) }
       hash[:flags] = flag_keys
     end
