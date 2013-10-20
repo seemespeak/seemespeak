@@ -24,3 +24,21 @@ en:
   turn_on_camera: Turn on camera
   record: Record
   recording: Recording...
+
+  languages:
+    dgs:
+      name: German Sign Language
+      link: http://en.wikipedia.org/wiki/German_Sign_Language
+    asl:
+      name: American Sign Language
+      link: http://en.wikipedia.org/wiki/ASL
+    bsl:
+      name: British Sign Language
+      link: http://en.wikipedia.org/wiki/British_Sign_Language
+
+  upload_video: Upload Video
+  seconds: Seconds
+  simple_form:
+    labels:
+      video:
+        length: Recording duration

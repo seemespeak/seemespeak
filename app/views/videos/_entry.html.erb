@@ -14,7 +14,7 @@
         <ul class="unstyled">
           <li><b>Language:</b> <%= entry.language %></li>
           <li><b>Dialect:</b> <%= entry.dialect %></li>
-          <li><b>Copyright:</b> <%= entry.copyright.nil? ? "" : link_to(entry.copyright.author, entry.copyright.links) %></li>
+          <li><b>Copyright:</b> <%= entry.copyright.nil? ? "" : link_to(entry.copyright.author, entry.copyright.link) %></li>
           <li>
             <b>Tags: </b> 
             <% entry.tags.each do |e| %>

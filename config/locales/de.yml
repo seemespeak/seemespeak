@@ -2,3 +2,21 @@ de:
   turn_on_camera: Kamera anschalten
   record: Aufnehmen
   recording: Nehme auf...
+
+  languages:
+    dgs:
+      name: Deutsche Gebärdensprache
+      link: http://de.wikipedia.org/wiki/Deutsche_Geb%C3%A4rdensprache
+    asl:
+      name: Amerikanische Gebärensprache
+      link: http://de.wikipedia.org/wiki/American_Sign_Language
+    bsl:
+      name: Britische Gebärdensprache
+      link: http://de.wikipedia.org/wiki/British_Sign_Language
+
+  upload_video: Video speichern
+  seconds: Sekunden
+  simple_form:
+    labels:
+      video:
+        length: Aufnahmelänge
