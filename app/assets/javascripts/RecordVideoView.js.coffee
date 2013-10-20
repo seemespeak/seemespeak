@@ -36,6 +36,7 @@
     b.removeClass "disabled"
     b.addClass "recording"
     b.text b.data("label-recording")
+    $('video#live').addClass "recording"
     $('#submits').fadeOut()
 
   toStateRecordingDone: ->
@@ -47,6 +48,7 @@
     video = $("video#live")
     video.attr "src", window.URL.createObjectURL(window.recorder.getBlob())
     video.attr "loop", "loop"
+    video.removeClass "recording"
     $('#submits').fadeIn()
 
   enterStateTransferring: ->
