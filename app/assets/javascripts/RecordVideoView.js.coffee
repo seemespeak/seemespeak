@@ -11,6 +11,7 @@
       audio: false
     , (stream) =>
       @recorder.captureFrom stream
+      @stream = stream
       video.attr "src", window.URL.createObjectURL(stream)
       @toStateRecordingReady()
     , (error) ->
@@ -43,6 +44,9 @@
     b.removeClass "disabled"
     b.removeClass "recording"
     b.text b.data("label-record-again")
+    video = $("video#live")
+    video.attr "src", window.URL.createObjectURL(window.recorder.getBlob())
+    video.attr "loop", "loop"
     $('#submits').fadeIn()
 
   enterStateTransferring: ->
@@ -59,6 +63,7 @@
 
   record: =>
     captureDuration = parseInt($("select[name='entry[video][length]']").val(), 0) * 1000
+    $("video#live").attr "src", window.URL.createObjectURL(@stream)
     @recorder.captureSpan captureDuration, =>
       @toStateRecordingDone()
     @toStateRecordingProgress()
