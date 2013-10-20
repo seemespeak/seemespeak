@@ -6,7 +6,7 @@ module Concerns
   module Transcodable
     def transcode_entry(entry_id, file)
       Rails.logger.debug("Running Queue: #{entry_id} - #{file}")
-      target_dir = File.join(VideoConversionSettings.video_path, entry_id)
+      target_dir = File.join(VideoConversionSettings.video_path, "entry_#{entry_id}")
       entry = Entry.get(entry_id)
 
       FileUtils.mkdir_p(target_dir)

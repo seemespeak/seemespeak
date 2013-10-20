@@ -24,7 +24,7 @@ Dir.glob(File.join(path, "json", "*.json")).each do |file|
                                        link: json["word_link"]))
     entry.index
 
-    target_path = File.join(ARGV[1], entry.id)
+    target_path = File.join(ARGV[1], "entry_#{entry.id}")
     FileUtils.mkdir_p(target_path)
 
     FileUtils.cp(mp4_file,
