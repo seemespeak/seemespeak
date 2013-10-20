@@ -47,9 +47,7 @@ class RecordVideoView
   constructor: (recorder) ->
     @recorder = recorder
 
-  turnOnCamera: (e) =>
-    e.target.disabled = true
-    $("#record-me").disabled = false
+  turnOnCamera: () =>
     video = $("video#live")
     video.attr "controls", false
 
@@ -59,6 +57,7 @@ class RecordVideoView
     , (stream) =>
       @recorder.captureFrom stream
       video.attr "src", window.URL.createObjectURL(stream)
+      @toggleActivateRecordButton()
     , (error) ->
       throw new Error("getUserMedia failed: "+error)
 
@@ -69,7 +68,6 @@ class RecordVideoView
     b.attr "disabled", !b.attr("disabled")
 
   bind: =>
-    $("#camera-me").on "click", @turnOnCamera
     $("#record-me").on "click", @record
     #$("#stop-me").on "click", @stop
     $("form#new_entry #upload_video").click (e) =>
@@ -77,17 +75,11 @@ class RecordVideoView
       @submitVideo()
 
   record: =>
-    @toggleActivateRecordButton()
-    @recorder.captureSpan VIDEO_OPTIONS.defaultDuration, =>
+    captureDuration = $("select[name='entry[video][length]']").val()
+    @recorder.captureSpan captureDuration, =>
       @toggleActivateRecordButton()
       alert "Success!"
-    #$("#stop-me").attr "disabled", false
-
-  #stop: =>
-    #$("#stop-me").attr "disabled", true
-    #@recorder.stop()
-    #document.title = ORIGINAL_DOC_TITLE
-    #@toggleActivateRecordButton()
+    @toggleActivateRecordButton()
 
   submitVideo: ->
     # Wrap video blob in FormData and post via $.ajax
@@ -115,4 +107,6 @@ window.recorder = new Recorder()
 view = new RecordVideoView(window.recorder)
 
 $ ->
-  view.bind()
+  if ($(document.body).hasClass("videos_new"))
+    view.bind()
+    view.turnOnCamera()

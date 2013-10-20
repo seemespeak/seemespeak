@@ -1,11 +1,48 @@
 // Place all the styles related to the videos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3";
+
 #video_popup{
   margin-top: 0px !important;
 
   .modal-body {
     max-height: 500px;
   }
+}
+
+.videos_new {
+	#record-me {
+		$diameter: 100px;
+		$primary: rgb(238, 95, 91);
+		$secondary: rgb(189, 54, 47);
+
+		height: $diameter;
+		width: $diameter;
+		@include border-radius($diameter);
+
+		font-weight:bold;
+		color: white;
+		text-shadow: 0px 0px 5px black;
+		@include background(linear-gradient($primary, $secondary));
+
+
+		&:hover {
+			@include background(linear-gradient($secondary, $primary));
+		}
+
+		&[disabled] {
+			@include background(linear-gradient(#909090, #606060));
+		}
+	}
+
+  #video-preview {
+		width: 640px;
+		float: left;
+	}
+
+	#form-controls {
+		float: left;
+	}
 
 }
