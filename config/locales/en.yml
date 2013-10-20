@@ -20,6 +20,23 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  search:
+    placeholder: "Go and look up a word"
+    search: "Search"
+  welcome:
+    show_all: Show me all of them!
+    record: Record a new one!
+    unavailable: Recording is only available in Google Chrome currently
+    learn_a_word: Learn a word today!
+    now_you_know: And now you know how to say
+    teach_me: Teach me another one!
+    about_text: "See Me Speak is a dictionary for sign language. You can easily
+search for signs and even add missing ones with your webcam."
+    database_text: "Currently we have %{entries} videos available in the database."
+  general:
+    or: or
+    by: by
+    about: About
   hello: "Hello world"
   turn_on_camera: Turn on camera
   record: Record

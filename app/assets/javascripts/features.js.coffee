@@ -14,7 +14,7 @@ class UserMedia
     else
       false
 
-$ ->
+$(document).on "ready page:load", ->
   u = new UserMedia()
   unless u.recording()
     $('.recording_only').hide()
