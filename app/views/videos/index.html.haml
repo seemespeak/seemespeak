@@ -12,7 +12,7 @@
           - if e.present?
             .span3
               .p
-                = link_to(image_tag(asset_path('rails.png'), :class => "img-polaroid"), video_path(e), :remote => true)
+                = link_to(image_tag(e.posterframe, :class => "img-polaroid"), video_path(e), :remote => true)
               .p
                 = e.transcription
               %p

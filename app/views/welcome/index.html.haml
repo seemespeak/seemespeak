@@ -17,9 +17,7 @@
     .span6
       %h3 Learn a word today!
       %p.well.lead
-        %video{height: "100%", width: "100%", controls: "controls", loop: "loop", poster: "http://rumble.seemespeak.org/videofiles/Festplatte.jpg"}
-          %source{src: "http://rumble.seemespeak.org/videofiles/Festplatte.mp4", type: "video/mp4"}
-          %source{src: "http://rumble.seemespeak.org/videofiles/Festplatte.webm", type: "video/webm"}
+        = render partial: "videos/video", locals: {entry: @random_entry}
         And now you know how to say <strong>#{@random_entry.transcription}</strong> in <strong>#{@random_entry.language}</strong>
     .span6
       %h3 About

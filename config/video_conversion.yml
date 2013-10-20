@@ -1,9 +1,9 @@
 test:
   temp_path: "tmp"
-  video_path: "public/videos"
+  video_path: "public/videofiles"
 development:
   temp_path: "tmp"
-  video_path: "public/videos"
+  video_path: "public/videofiles"
 production:
   temp_path: "/tmp/seemespeak"
   video_path: "/home/railsrumble/videos"

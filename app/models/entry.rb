@@ -88,6 +88,17 @@ class Entry
     end
   end
 
+  def posterframe
+    "/videofiles/entry_#{id}/picture.jpg"
+  end
+
+  def video_urls
+    { 
+      "video/webm" => "/videofiles/entry_#{id}/movie.webm",
+      "video/mp4"  => "/videofiles/entry_#{id}/movie.mp4"
+    }
+  end
+
   ALLOWED_FLAGS.each do |flag|
     define_method flag do
       flags.include? flag
