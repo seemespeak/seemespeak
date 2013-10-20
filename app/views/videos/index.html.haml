@@ -2,18 +2,38 @@
   .row-fluid.page-header.text-center
     %h1
       = link_to(image_tag("logo.png", alt: "See Me Speak"), root_path)
-  .row-fluid
-    = render partial:"videos/search"
+
+  = form_tag(videos_path, :method => :get, id: "search_form") do
+    .row-fluid
+      .text-center.search-field
+        .input-append
+          = text_field_tag :transcription, params[:transcription], placeholder: "Go and look up a word...", autofocus: "autofocus"
+          = button_tag "Search", class: "btn"
+        .more-options
+          %a{href: "#options"} Show more options ...
+    .row-fluid.expert-search
+      .span3
+      .span6.well
+        .row-fluid
+          - Entry::ALLOWED_FLAGS.each do |flag|
+            = check_box_tag flag, 1, params[flag] == "1"
+            = label_tag flag, flag, class: "checkbox inline"
+        .row-fluid
+          %input{name:"old_moderated", type: "hidden", value: params["moderated"]}
+          = check_box_tag "moderated", 1, params["moderated"].nil? || params["moderated"] == "1"
+          = label_tag "moderated", "moderated", class: "checkbox inline"
+      .span3
 %section.row-fluid
   - if @entries.count > 0
-    %h2
-      ="Results for: #{search_result_header}"
-    .span9
+    .span2
+    .span7
+      %h2
+        ="Results for: #{search_result_header}"
       = @entries.to_a.in_groups_of(3) do |group|
         .row-fluid
           - group.each do |e|
             - if e.present?
-              .span3
+              .span4
                 .p
                   = link_to(image_tag(e.posterframe, :class => "img-polaroid"), video_path(e), :remote => true)
                 .p
@@ -22,8 +42,9 @@
                   = explain_language(e.language)
                 %p
                   = e.dialect
-      .span3
-      = render partial: "videos/pagination", locals: { entries: @entries }
+      .row-fluid
+        .span12.text-center
+          = render partial: "videos/pagination", locals: { entries: @entries }
   - else
     .not-found
       .row-fluid
