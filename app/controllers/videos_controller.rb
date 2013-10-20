@@ -1,5 +1,7 @@
 class VideosController < ApplicationController
   include TorqueBox::Messaging::Backgroundable
+  include Concerns::Transcodable
+  always_background :generate_video
 
   def index
     @entries = Entry.search(:phrase => params[:transcription])
@@ -26,6 +28,8 @@ class VideosController < ApplicationController
 
     write_video(@entry, file)
 
+    VideosController.generate_video(@entry.id, file.path)
+
     redirect_to videos_path
   end
 
@@ -40,5 +44,9 @@ class VideosController < ApplicationController
 
     def write_video(entry, file)
       File.open(temp_file_path(entry), "wb") { |f| f.write(file.read) }
+    end
+
+    def self.generate_video(entry_id, file)
+      VideosController.new.transcode_entry(entry_id, file)
     end
 end

@@ -1,6 +1,9 @@
 test:
   temp_path: "tmp"
+  video_path: "public/videos"
 development:
   temp_path: "tmp"
+  video_path: "public/videos"
 production:
   temp_path: "/tmp/seemespeak"
+  video_path: "public/videos"
