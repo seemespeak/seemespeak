@@ -4,6 +4,8 @@ de:
       models:
         entry:
           attributes:
+            transcription:
+              blank: 'darf nicht leer sein'
             tags:
               blank: 'darf nicht leer sein'
         copyright:
