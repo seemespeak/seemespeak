@@ -36,8 +36,12 @@
           = image_tag("german.png")
     .container-fluid
       .row-fluid
-        .span12
+        .span2
+        .span8
           = bootstrap_flash
+        .span2
+      .row-fluid
+        .span12
           = yield
       / /row
       %footer
