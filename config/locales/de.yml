@@ -14,3 +14,9 @@ de:
       name: Britische Gebärdensprache
       link: http://de.wikipedia.org/wiki/British_Sign_Language
 
+  upload_video: Video speichern
+  seconds: Sekunden
+  simple_form:
+    labels:
+      video:
+        length: Aufnahmelänge

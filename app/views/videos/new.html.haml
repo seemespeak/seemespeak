@@ -1,21 +1,21 @@
-%h2 Record new video
-%section#video-preview
-  %fieldset#video-controls
-    %button#camera-me= t "turn_on_camera"
-    %button#record-me{ data: {recording_label: t("recording"), record_label: t("record")} }= t "record"
-  %video#live{autoplay: "", height: "480", width: "640"}
-  = form_for @entry, url: videos_path(@entry) do |f|
-    = f.label :transcription
-    = f.text_field :transcription
-    = f.label :tags
-    = f.text_field :tags, :value => @entry.tags.join(" ")
-    - Entry::ALLOWED_FLAGS.each do |flag|
-      = f.label flag
-      = f.check_box flag
-    = f.label :language
-    = f.select :language, Entry::ALLOWED_LANGUAGES
-    = f.label :dialect
-    = f.text_field :dialect
-    %fieldset#submits
-      = f.button "Upload video", id: :upload_video
-      = f.button :submit
+.row-fluid
+  .span12.text-center
+    %fieldset#video-controls
+      %button#record-me{ disabled: :disabled, data: {recording_label: t("recording"), record_label: t("record")} }= t "record"
+= simple_form_for @entry, url: videos_path(@entry), :html => { :class => "form-horizontal" }  do |f|
+  .row-fluid
+    .span12
+      %section#video-preview.text-center
+        %video#live{autoplay: "", height: "480", width: "640"}
+        = f.simple_fields_for :video do |v|
+          = v.input :length, collection: length_collection,  include_blank: false, input_html: {class: "input-xs"}
+      %section#form-controls
+        = f.input :transcription
+        = f.input :tags, input_html: { :value => @entry.tags.join(" ") }
+        - Entry::ALLOWED_FLAGS.each do |flag|
+          = f.input flag, as: :boolean
+        = f.input :language, collection: Entry::ALLOWED_LANGUAGES, include_blank: false
+        = f.input :dialect
+  .row-fluid
+    %fieldset.form-actions.text-center.span12#submits
+      = f.button :button, t(:upload_video), id: :upload_video
