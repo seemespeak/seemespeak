@@ -27,47 +27,53 @@
   margin: 20px;
 }
 
-#live {
-  background-color: black;
-}
-
 .videos_new {
-	#record-me {
-		$diameter: 125px;
-		$primary: rgb(238, 95, 91);
-		$secondary: rgb(189, 54, 47);
+  video#live {
+    background-color: black;
+    border: 2px solid white;
+    @include border-radius(4px);
 
-		height: $diameter;
-		width: $diameter;
-		@include border-radius($diameter);
+    &.recording {
+      border-color: red;
+    }
+  }
 
-		font-weight:bold;
-		color: white;
-		text-shadow: 0px 0px 5px black;
-		@include background(linear-gradient($primary, $secondary));
+  #record-me {
+    $diameter: 125px;
+    $primary: rgb(238, 95, 91);
+    $secondary: rgb(189, 54, 47);
+
+    height: $diameter;
+    width: $diameter;
+    @include border-radius($diameter);
+
+    font-weight:bold;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    @include background(linear-gradient($primary, $secondary));
 
 
-		&:hover {
-			@include background(linear-gradient($secondary, $primary));
-		}
+    &:hover {
+      @include background(linear-gradient($secondary, $primary));
+    }
 
-		&[disabled] {
-			@include background(linear-gradient(#909090, #606060));
-		}
-	}
+    &[disabled] {
+      @include background(linear-gradient(#909090, #606060));
+    }
+  }
 
-	#action-controls > *{
-		padding: 0 15px;
-	}
+  #action-controls > *{
+    padding: 0 15px;
+  }
 
   #video-preview {
-		float: left;
-		width: 640px;
-		padding-right: 20px;
-	}
+    float: left;
+    width: 640px;
+    padding-right: 20px;
+  }
 
-	#form-controls {
-		float: left;
-	}
+  #form-controls {
+    float: left;
+  }
 
 }

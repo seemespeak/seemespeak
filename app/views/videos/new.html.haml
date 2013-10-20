@@ -25,7 +25,7 @@
         = f.input :tags, input_html: { :value => @entry.tags.join(" ") }
         - Entry::ALLOWED_FLAGS.each do |flag|
           = f.input flag, as: :boolean
-        = f.input :language, collection: Entry::ALLOWED_LANGUAGES.map {|l| long_language(l)}, include_blank: false
+        = f.input :language, collection: Entry::ALLOWED_LANGUAGES.map {|l| [long_language(l), l]}, include_blank: false
         = f.input :dialect
         = simple_fields_for :"entry[copyright]", @entry.copyright do |c|
           = c.input :author

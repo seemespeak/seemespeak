@@ -27,7 +27,7 @@ en:
     results: "Results"
     pagination: "Entries %{from} to %{to} of %{total}"
     not_found: "Sorry, we haven't found an entry for %{transcription}."
-    record_new: "Record a new video for <em>%{transcription}</em>"
+    record_new: "Record a new video for %{transcription}"
     unavailable: You could record a new one if you use Google Chrome.
   welcome:
     show_all: Show me all of them!
@@ -37,7 +37,10 @@ en:
     now_you_know: And now you know how to say
     teach_me: Teach me another one!
     about_text: "See Me Speak is a dictionary for sign language. You can easily
-search for signs and even add missing ones with your webcam."
+search for signs and even add missing ones with your webcam.
+
+Words that are not in your chosen language will be translated for you. Want to learn
+german sign language? Just go ahead!"
     database_text: "Currently we have %{entries} videos available in the database."
   flags:
     insult: insults 

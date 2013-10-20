@@ -7,5 +7,5 @@ class Copyright
   attribute :license_accepted, Boolean
 
   validates :author, :presence => true
-  validates_acceptance_of :license_accepted
+  validates :license_accepted, :presence => true
 end
