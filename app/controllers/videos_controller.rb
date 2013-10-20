@@ -75,6 +75,7 @@ class VideosController < ApplicationController
     end
 
     def self.generate_video(entry_id, file)
+      Rails.logger.debug("------#{entry_id} ---- #{file}")
       VideosController.new.transcode_entry(entry_id, file)
     end
 end
