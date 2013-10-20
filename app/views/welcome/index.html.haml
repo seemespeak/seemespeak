@@ -4,10 +4,7 @@
       = link_to(image_tag("logo.png", alt: "See Me Speak"), root_path)
   .row-fluid
     .text-center.search-field
-      = form_tag(videos_path, :method => :get) do
-        .input-append
-          = text_field_tag :transcription, nil, placeholder: "Go and look up a word...", autofocus: "autofocus"
-          = button_tag "Search", class: "btn"
+      = render partial:"videos/search"
       %a.btn.recording_only{href: new_video_path}
         Or record a new one
       .btn.no_recording.hidden{disabled: "disabled"}
@@ -19,16 +16,16 @@
       .well.lead
         = render partial: "videos/video", locals: {entry: @random_entry}
         .text
-          And now you know how to say <strong>#{@random_entry.transcription}</strong> in <strong>#{link_to_language(@random_entry.language)}</strong>
-        .copyright
-          (
-          - if @random_entry.copyright
+          And now you know how to say <strong>#{sign_translate(@random_entry)}</strong> in <strong>#{link_to_language(@random_entry.language)}</strong>
+        - if @random_entry.copyright
+          .copyright
+            (
             By
             - if @random_entry.copyright.link.present?
               = link_to @random_entry.copyright.author, @random_entry.copyright.link
             - else
               = @random_entry.copyright.author
-          )
+            )
     .span6
       %h3 About
       %p.lead

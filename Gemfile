@@ -65,3 +65,5 @@ gem "settingslogic"
 
 gem 'capistrano'
 gem 'torquebox-capistrano-support'
+
+gem 'bing_translator'

@@ -5,6 +5,14 @@
 
 #video_popup{
   margin-top: 0px !important;
+
+  .modal-body {
+    max-height: 500px;
+  }
+}
+
+.not-found {
+  margin: 20px;
 }
 
 .videos_new {

@@ -3,27 +3,37 @@
     %h1
       = link_to(image_tag("logo.png", alt: "See Me Speak"), root_path)
   .row-fluid
-    .text-center.search-field
-      = form_tag(videos_path, :method => :get) do
-        .input-append
-          = text_field_tag :transcription, params[:transcription], placeholder: "Go and look up a word...", autofocus: "autofocus"
-          = button_tag "Search", class: "btn"
+    = render partial:"videos/search"
 %section.row-fluid
-  %h2
-    ="Results for: #{search_result_header}"
-  .span9
-    = @entries.to_a.in_groups_of(3) do |group|
+  - if @entries.count > 0
+    %h2
+      ="Results for: #{search_result_header}"
+    .span9
+      = @entries.to_a.in_groups_of(3) do |group|
+        .row-fluid
+          - group.each do |e|
+            - if e.present?
+              .span3
+                .p
+                  = link_to(image_tag(e.posterframe, :class => "img-polaroid"), video_path(e), :remote => true)
+                .p
+                  = link_to(e.transcription, video_path(e), :remote => true)
+                %p
+                  = explain_language(e.language)
+                %p
+                  = e.dialect
+      .span3
+      = render partial: "videos/pagination", locals: { entries: @entries }
+  - else
+    .not-found
       .row-fluid
-        - group.each do |e|
-          - if e.present?
-            .span3
-              .p
-                = link_to(image_tag(e.posterframe, :class => "img-polaroid"), video_path(e), :remote => true)
-              .p
-                = e.transcription
-              %p
-                = e.language
-              %p
-                = e.dialect
-    .span3
+        .text-center
+          %h3 Sorry, we haven't found a video for "#{params[:transcription]}".
+      .row-fluid
+        .text-center
+          %a.btn.recording_only{href: new_video_path}
+            Record a new one.
+          .btn.no_recording.hidden{disabled: "disabled"}
+            You could record a new one if you use Google Chrome.
+
 #current_video
