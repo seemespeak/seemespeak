@@ -36,6 +36,9 @@
           DE
     .container-fluid
       .row-fluid
+        .offset10.span2
+          =link_to "admin", reviews_path, :class => "pull-right"
+      .row-fluid
         .span12
           = bootstrap_flash
           = yield
