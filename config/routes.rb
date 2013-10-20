@@ -8,6 +8,8 @@ Seemespeak::Application.routes.draw do
   	end
   end
 
+  get "language/:locale", :controller => "locale", :action => "change"
+
   root      to: "welcome#index"
 
 end

@@ -29,7 +29,7 @@
 
 .videos_new {
 	#record-me {
-		$diameter: 100px;
+		$diameter: 125px;
 		$primary: rgb(238, 95, 91);
 		$secondary: rgb(189, 54, 47);
 
@@ -52,9 +52,14 @@
 		}
 	}
 
+	#action-controls > *{
+		padding: 0 15px;
+	}
+
   #video-preview {
-		width: 640px;
 		float: left;
+		width: 640px;
+		padding-right: 20px;
 	}
 
 	#form-controls {

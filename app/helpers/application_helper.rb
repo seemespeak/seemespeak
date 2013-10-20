@@ -8,4 +8,8 @@ module ApplicationHelper
     content_tag("abbr", lang, {text:t("languages.#{lang.downcase}.name")})
   end
 
+  def long_language(lang)
+    t("languages.#{lang.downcase}.name")
+  end
+
 end

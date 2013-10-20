@@ -28,6 +28,13 @@
     = javascript_include_tag "application"
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
     .container-fluid
+      - if I18n.locale == :de
+        %a{href: "language/en"}
+          EN
+      - else
+        %a{href: "language/de"}
+          DE
+    .container-fluid
       .row-fluid
         .offset10.span2
           =link_to "admin", reviews_path, :class => "pull-right"
@@ -44,6 +51,9 @@
           A Rails Rumble 2013 project - 
           %a{href:'http://railsrumble.com/entries/39-seemespeak'} Vote for us!
     / /container
+  %script
+    rumbleBannerPlacement = "bottom";
+
   %script{src: "http://s0.railsrumble.com/banner.js", type: "text/javascript"}
 
   %script
