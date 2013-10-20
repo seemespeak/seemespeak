@@ -17,6 +17,12 @@ footer {
   margin: 20px 10px 50px 10px;
 }
 
+.locale-switcher {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
 .row-standout {
 	padding-bottom: 40px; // Same as bootstrap's page-header
 }

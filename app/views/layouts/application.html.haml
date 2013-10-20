@@ -27,13 +27,13 @@
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
-    .container-fluid
+    .locale-switcher
       - if I18n.locale == :de
         %a{href: "language/en"}
-          EN
+          = image_tag("english.png")
       - else
         %a{href: "language/de"}
-          DE
+          = image_tag("german.png")
     .container-fluid
       .row-fluid
         .span12
