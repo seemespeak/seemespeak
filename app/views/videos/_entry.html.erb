@@ -1,28 +1,18 @@
-<div id="video_popup" class="modal" tabindex="-1" data-width="950" data-height="600">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>
-      <%= entry.transcription %>
-    </h3>
-  </div>
-  <div class="modal-body">
-    <div class="row-fluid">
-      <div class="span8 video">
-        <%= render partial: "videos/video", locals: {entry: entry} %>
-      </div>
-      <div class="span4">
-        <ul class="unstyled">
-          <li><b>Language:</b> <%= link_to_language(entry.language) %></li>
-          <li><b>Dialect:</b> <%= entry.dialect %></li>
-          <li><b>Copyright:</b> <%= entry.copyright.nil? ? "" : link_to(entry.copyright.author, entry.copyright.link) %></li>
-          <li>
-            <b>Tags: </b> 
-            <% entry.tags.each do |e| %>
-              <%= link_to_videos_with_tag(e) %>
-            <% end %>
-          </li>
-        </ul>
-      </div>
+  <div class="row-fluid">
+    <div class="span8 video">
+      <%= render partial: "videos/video", locals: {entry: entry} %>
+    </div>
+    <div class="span4">
+      <ul class="unstyled">
+        <li><b>Language:</b> <%= link_to_language(entry.language) %></li>
+        <li><b>Dialect:</b> <%= entry.dialect %></li>
+        <li><b>Copyright:</b> <%= entry.copyright.nil? ? "" : link_to(entry.copyright.author, entry.copyright.link) %></li>
+        <li>
+          <b>Tags: </b> 
+          <% entry.tags.each do |e| %>
+            <%= link_to_videos_with_tag(e) %>
+          <% end %>
+        </li>
+      </ul>
     </div>
   </div>
-</div>

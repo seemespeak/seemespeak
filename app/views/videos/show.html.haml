@@ -1,1 +1,11 @@
-<%= video_tag("http://rumble.seemespeak.org/videofiles/Festplatte.webm", :id => "the_video") %>
+.row-fluid
+  .row-fluid.page-header.text-center
+    %h1
+      = link_to(image_tag("logo.png", alt: "See Me Speak"), root_path)
+
+.row-fluid
+  .span2
+  .span8
+    = render partial: "videos/entry", locals: {entry: @entry}
+
+
