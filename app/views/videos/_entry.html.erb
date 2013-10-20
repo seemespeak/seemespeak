@@ -2,14 +2,24 @@
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h3>
-      Video 
+      <%= entry.transcription %>
     </h3>
   </div>
   <div class="modal-body">
     <div class="row-fluid">
-      <%= video_tag("http://rumble.seemespeak.org/videofiles/Festplatte.webm", :id => "the_video") %>
+      <div class="span8">
+        <%= video_tag("http://rumble.seemespeak.org/videofiles/Festplatte.webm", :id => "the_video") %>
+      </div>
+      <div class="span4">
+        <ul class="unstyled">
+          <li><b>Language:</b> <%= entry.language %></li>
+          <li><b>Dialect</b> <%= entry.dialect %></li>
+          <li><b>Copyright:</b> <%= entry.copyright %></li>
+          <li>
+            <b>Tags: </b>  <%= entry.tags.map{ |e| content_tag(:span, e, :class => "label") } %>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-  <div class="modal-footer">
   </div>
 </div>
