@@ -20,9 +20,9 @@
               .p
                 = link_to(image_tag(e.posterframe, :class => "img-polaroid"), video_path(e), :remote => true)
               .p
-                = e.transcription
+                = link_to(e.transcription, video_path(e), :remote => true)
               %p
-                = e.language
+                = explain_language(e.language)
               %p
                 = e.dialect
     .span3
