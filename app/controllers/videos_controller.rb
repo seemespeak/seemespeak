@@ -52,7 +52,7 @@ class VideosController < ApplicationController
 
       VideosController.generate_video(@entry.id, file.path)
 
-      render :json => "okay"
+      head :ok
     else
       response.status = 422
       response_body = { :errors => @entry.errors.full_messages }
