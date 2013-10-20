@@ -7,28 +7,29 @@
     .row-fluid
       .text-center.search-field
         .input-append
-          = text_field_tag :transcription, params[:transcription], placeholder: "Go and look up a word...", autofocus: "autofocus"
-          = button_tag "Search", class: "btn"
+          = text_field_tag :transcription, params[:transcription], placeholder: t(:placeholder, :scope => :search), autofocus: "autofocus"
+          = button_tag t(:search, :scope => :search), class: "btn"
         .more-options
-          %a{href: "#options"} Show more options ...
+          %a{href: "#options"}
+            = t(:more_options, :scope => :search)
     .row-fluid.expert-search
       .span3
       .span6.well
         .row-fluid
           - Entry::ALLOWED_FLAGS.each do |flag|
             = check_box_tag flag, 1, params[flag] == "1"
-            = label_tag flag, flag, class: "checkbox inline"
+            = label_tag flag, t(flag, :scope => :flags), class: "checkbox inline"
         .row-fluid
           %input{name:"old_reviewed", type: "hidden", value: params["reviewed"]}
           = check_box_tag "reviewed", 1, params["reviewed"] == 1
-          = label_tag "reviewed", "reviewed", class: "checkbox inline"
+          = label_tag "reviewed", t(:reviewed, :scope => :flags), class: "checkbox inline"
       .span3
 %section.row-fluid
   - if @entries.count > 0
     .span2
     .span7
       %h2
-        ="Results for: #{search_result_header}"
+        = t(:results, :scope => :search)
       = @entries.to_a.in_groups_of(3) do |group|
         .row-fluid
           - group.each do |e|
@@ -49,13 +50,13 @@
     .not-found
       .row-fluid
         .text-center
-          %h3 Sorry, we haven't found a video for "#{params[:transcription]}".
+          %h3
+            = t(:not_found, :scope => :search) % {transcription: params[:transcription]}
       .row-fluid
         .text-center
           %a.btn.btn-primary.btn-large.recording_only{href: new_video_path(Entry, transcription: params[:transcription])}
-            Record a new video for
-            %em= params[:transcription]
+            = t(:record_new, :scope => :search) % {transcription: params[:transcription]}
           .btn.no_recording.hidden{disabled: "disabled"}
-            You could record a new one if you use Google Chrome.
+            = t(:unavailable, :scope => :search)
 
 #current_video

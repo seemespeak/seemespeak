@@ -2,7 +2,7 @@
   %a{href: videos_path(params.merge(from: entries.from - 9))}
     <
 
-Entries #{entries.from + 1} to #{entries.from + 9} of #{entries.total}
+= t(:pagination, :scope => :search) % {from: entries.from + 1, to: entries.from + 9, total: entries.total}
 
 - if (entries.from + entries.count) < entries.total
   %a{href: videos_path(params.merge(from: entries.from + 9))}
