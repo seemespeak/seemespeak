@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @entries = Entry.search(:reviewed => false)
+    @entries = Entry.search(:reviewed => false, :from => (params[:from] || 0))
   end
 
 # # GET /reviews/1
