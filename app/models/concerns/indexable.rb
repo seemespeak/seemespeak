@@ -7,9 +7,12 @@ module Concerns
 
       attr_accessor :results
       attr_accessor :total
+      attr_accessor :from
 
-      def initialize(results, total)
+      def initialize(results, from, total)
         self.results = results
+        self.from = from
+        self.total = total
       end
 
       def each(*args, &block)
@@ -75,7 +78,7 @@ module Concerns
           model
         end
 
-        ResultList.new(result_list, result["hits"]["total"])
+        ResultList.new(result_list, Integer(args.fetch(:from, 0)), result["hits"]["total"])
       end
 
       def count(args = {})

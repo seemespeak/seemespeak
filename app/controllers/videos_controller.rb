@@ -5,8 +5,10 @@ class VideosController < ApplicationController
 
   def index
     filter = {}
-    filter = {:phrase => params[:transcription]}   if params[:transcription].present?
-    filter = filter.merge({:tags => params[:tag]}) if params[:tag].present?
+    filter = {:phrase => params[:transcription]}    if params[:transcription].present?
+    filter = filter.merge({:tags => params[:tag]})  if params[:tag].present?
+    filter = filter.merge({:from => params[:from]}) if params[:from].present?
+    fitler = filter.merge({:random => Integer(params[:random])})  if params[:random].present?
 
     if !params["old_moderated"].nil? && params["moderated"].nil?
       params["moderated"] = 0
