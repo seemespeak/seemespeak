@@ -22,7 +22,7 @@ de:
     teach_me: Bring mir ein anderes bei!
     about_text: "See Me Speak ist ein Wörterbuch für Gebärdensprachen. Du kannst
 nach Gebärden suchen oder sogar selbst welche aufnehmen!"
-    database_text: "Wir haben momentan %{entries} videos in der Datenbank."
+    database_text: "Wir haben momentan %{entries} Videos in der Datenbank."
   general:
     or: oder
     by: von
