@@ -70,7 +70,7 @@ class EntrySeed
     EntrySeed.words.each do |word|
       entry_hash = {
       	             :transcription => word,
-                     :flags         => [flags.sample],
+                     :flags         => Array(flags.sample),
                      :reviewed      => true,
                      :language      => random_language,
                      :dialect       => random_dialect
