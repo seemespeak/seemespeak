@@ -1,12 +1,12 @@
 .row-fluid
   .row-fluid.page-header.text-center
     %h1
-      = image_tag("logo.png", alt: "See Me Speak")
+      = link_to(image_tag("logo.png", alt: "See Me Speak"), root_path)
   .row-fluid
     .text-center.search-field
       = form_tag(videos_path, :method => :get) do
         .input-append
-          = text_field_tag :transcription, nil, placeholder: "Go and look up a word..."
+          = text_field_tag :transcription, nil, placeholder: "Go and look up a word...", autofocus: "autofocus"
           = button_tag "Search", class: "btn"
       %a.btn.recording_only{href: new_video_path}
         Or record a new one
