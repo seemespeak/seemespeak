@@ -25,14 +25,15 @@
       .span3
 %section.row-fluid
   - if @entries.count > 0
-    %h2
-      ="Results for: #{search_result_header}"
-    .span9
+    .span2
+    .span7
+      %h2
+        ="Results for: #{search_result_header}"
       = @entries.to_a.in_groups_of(3) do |group|
         .row-fluid
           - group.each do |e|
             - if e.present?
-              .span3
+              .span4
                 .p
                   = link_to(image_tag(e.posterframe, :class => "img-polaroid"), video_path(e), :remote => true)
                 .p
@@ -41,8 +42,9 @@
                   = explain_language(e.language)
                 %p
                   = e.dialect
-      .span3
-      = render partial: "videos/pagination", locals: { entries: @entries }
+      .row-fluid
+        .span12.text-center
+          = render partial: "videos/pagination", locals: { entries: @entries }
   - else
     .not-found
       .row-fluid
