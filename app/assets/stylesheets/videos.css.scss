@@ -29,7 +29,7 @@
 
 .videos_new {
 	#record-me {
-		$diameter: 100px;
+		$diameter: 125px;
 		$primary: rgb(238, 95, 91);
 		$secondary: rgb(189, 54, 47);
 
@@ -50,6 +50,10 @@
 		&[disabled] {
 			@include background(linear-gradient(#909090, #606060));
 		}
+	}
+
+	#action-controls > *{
+		padding: 0 15px;
 	}
 
   #video-preview {

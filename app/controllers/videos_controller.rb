@@ -28,7 +28,7 @@ class VideosController < ApplicationController
   end
 
   def new
-    @entry = Entry.new
+    @entry = Entry.new(:copyright => Copyright.new())
   end
 
   def show
@@ -43,14 +43,22 @@ class VideosController < ApplicationController
   def create
     file = params[:entry].delete(:video)
     @entry = Entry.new(params[:entry])
+
     @entry.video = Video.new
     @entry.index
 
-    write_video(@entry, file)
+    if [@entry.valid?, @entry.copyright.valid?].all?
+      write_video(@entry, file)
 
-    VideosController.generate_video(@entry.id, file.path)
+      VideosController.generate_video(@entry.id, file.path)
 
-    redirect_to videos_path
+      redirect_to videos_path
+    else
+      response.status = 422
+      response_body = { :errors => @entry.errors.full_messages }
+      response_body[:errors].concat @entry.copyright.errors.full_messages
+      render :json => response_body
+    end
   end
 
   private
