@@ -11,7 +11,7 @@ ORIGINAL_DOC_TITLE = document.title
 window.recorder = new Recorder()
 view = new RecordVideoView(window.recorder)
 
-$ ->
+$(document).on "ready page:load", ->
   if ($(document.body).hasClass("videos_new"))
     view.bind()
     view.turnOnCamera()
