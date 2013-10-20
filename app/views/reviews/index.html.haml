@@ -1,0 +1,34 @@
+.row-fluid
+  .row-fluid.page-header.text-center
+    %h1
+      = link_to(image_tag("logo.png", alt: "See Me Speak"), root_path)
+
+%section.row-fluid
+  - if @entries.count > 0
+    .span2
+    .span7
+      %h2
+        ="Unmoderated Videos"
+      = @entries.to_a.in_groups_of(3) do |group|
+        .row-fluid
+          - group.each do |e|
+            - if e.present?
+              .span4
+                .p
+                  = link_to(image_tag(e.posterframe, :class => "img-polaroid"), review_path(e), :remote => true)
+                .p
+                  = link_to(e.transcription, review_path(e), :remote => true)
+                %p
+                  = explain_language(e.language)
+                %p
+                  = e.dialect
+      .row-fluid
+        .span12.text-center
+          = render partial: "videos/pagination", locals: { entries: @entries }
+  - else
+    .span2
+    .span7
+      %h2
+        ="No unmoderated videos found"
+
+#current_video

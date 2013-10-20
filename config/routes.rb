@@ -2,7 +2,11 @@ Seemespeak::Application.routes.draw do
 
   resources :videos
 
-  resources :reviews
+  resources :reviews do
+    member do
+  	  get 'mark_as_moderated'
+  	end
+  end
 
   get "language/:locale", :controller => "locale", :action => "change"
 

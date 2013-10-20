@@ -23,6 +23,8 @@ class Entry
 
       if reviewed
         bool[:must] << { :term => { :reviewed => true } }
+      else
+        bool[:must] << { :term => { :reviewed => false } }
       end
 
       if ignored_flags
