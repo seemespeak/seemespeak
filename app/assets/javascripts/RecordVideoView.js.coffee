@@ -1,4 +1,4 @@
-class RecordVideoView
+@RecordVideoView = class RecordVideoView
   constructor: (recorder) ->
     @recorder = recorder
 
