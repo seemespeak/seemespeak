@@ -5,6 +5,8 @@
   .row-fluid
     .text-center.search-field
       = render partial:"videos/search"
+      %a.btn{href: videos_path(random: rand(2000))}
+        Show me all of them!
       %a.btn.recording_only{href: new_video_path}
         Or record a new one
       .btn.no_recording.hidden{disabled: "disabled"}

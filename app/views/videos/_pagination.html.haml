@@ -1,9 +1,9 @@
 - if entries.from > 0
-  %a{href: videos_path(from: entries.from - 20)}
+  %a{href: videos_path(params.merge(from: entries.from - 20))}
     <
 
 Entries #{entries.from + 1} to #{entries.from + 20} of #{entries.total}
 
 - if (entries.from + entries.count) < entries.total
-  %a{href: videos_path(from: entries.from + 20)}
+  %a{href: videos_path(params.merge(from: entries.from + 20))}
     >
