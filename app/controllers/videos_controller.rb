@@ -52,7 +52,7 @@ class VideosController < ApplicationController
 
       VideosController.generate_video(@entry.id, file.path)
 
-      head :ok
+      render :json => "okay"
     else
       response.status = 422
       response_body = { :errors => @entry.errors.full_messages }
@@ -75,7 +75,7 @@ class VideosController < ApplicationController
     end
 
     def self.generate_video(entry_id, file)
-      Rails.logger.debug("------#{entry_id} ---- #{file}")
+      Rails.logger.warn("------#{entry_id} ---- #{file}")
       VideosController.new.transcode_entry(entry_id, file)
     end
 end
