@@ -6,7 +6,7 @@ de:
     results: "Resultate"
     pagination: "Einträge %{from} bis %{to} von %{total}"
     not_found: "Wir haben leider keinen Eintrag für %{transcription}"
-    record_new: "Nimm ein Video für <em>%{transcription}</em> auf!"
+    record_new: "Nimm ein Video für %{transcription} auf!"
     unavailable: Aufnahme von neuen Videos geht momentan leider nur in Google Chrome
   flags:
     insult: Beleidigungen 
@@ -21,7 +21,9 @@ de:
     now_you_know: Jetzt kennst du
     teach_me: Bring mir ein anderes bei!
     about_text: "See Me Speak ist ein Wörterbuch für Gebärdensprachen. Du kannst
-nach Gebärden suchen oder sogar selbst welche aufnehmen!"
+nach Gebärden suchen oder sogar selbst welche aufnehmen!
+
+Wir übersetzen Wörter aus Fremdsprachen für dich. Du möchtest Amerikanische Gebärdensprache lernen? Leg einfach los!"
     database_text: "Wir haben momentan %{entries} Videos in der Datenbank."
   general:
     or: oder
