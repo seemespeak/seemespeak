@@ -6,4 +6,4 @@ development:
   video_path: "public/videos"
 production:
   temp_path: "/tmp/seemespeak"
-  video_path: "public/videos"
+  video_path: "/home/railsrumble/videos"
