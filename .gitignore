@@ -16,3 +16,6 @@
 /tmp
 /public/videofiles/
 .sass-cache
+
+# Ignore yml file with admin passwords
+/config/admin_settings.yml
