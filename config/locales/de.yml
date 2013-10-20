@@ -2,6 +2,17 @@ de:
   search:
     placeholder: "Such dir ein Wort aus..."
     search: "Suchen"
+    more_options: "Mehr Optionen..."
+    results: "Resultate"
+    pagination: "Einträge %{from} bis %{to} von %{total}"
+    not_found: "Wir haben leider keinen Eintrag für %{transcription}"
+    record_new: "Nimm ein Video für <em>%{transcription}</em> auf!"
+    unavailable: Aufnahme von neuen Videos geht momentan leider nur in Google Chrome
+  flags:
+    insult: Beleidigungen 
+    casual: Umgangssprache
+    vulgar: Vulgärsprache
+    reviewed: nur überprüfte Einträge
   welcome:
     show_all: Zeig mir alle!
     record: Nimm selbst was auf!

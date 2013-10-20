@@ -29,10 +29,10 @@
   %body{:class => "#{controller.controller_name}_#{controller.action_name}" }
     .locale-switcher
       - if I18n.locale == :de
-        %a{href: "language/en"}
+        %a{href: "/language/en"}
           = image_tag("english.png")
       - else
-        %a{href: "language/de"}
+        %a{href: "/language/de"}
           = image_tag("german.png")
     .container-fluid
       .row-fluid

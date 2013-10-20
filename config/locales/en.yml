@@ -23,6 +23,12 @@ en:
   search:
     placeholder: "Go and look up a word"
     search: "Search"
+    more_options: "Show more options..."
+    results: "Results"
+    pagination: "Entries %{from} to %{to} of %{total}"
+    not_found: "Sorry, we haven't found an entry for %{transcription}."
+    record_new: "Record a new video for <em>%{transcription}</em>"
+    unavailable: You could record a new one if you use Google Chrome.
   welcome:
     show_all: Show me all of them!
     record: Record a new one!
@@ -33,6 +39,11 @@ en:
     about_text: "See Me Speak is a dictionary for sign language. You can easily
 search for signs and even add missing ones with your webcam."
     database_text: "Currently we have %{entries} videos available in the database."
+  flags:
+    insult: insults 
+    casual: casual language
+    vulgar: vulgar language
+    reviewed: only reviewed entries
   general:
     or: or
     by: by
