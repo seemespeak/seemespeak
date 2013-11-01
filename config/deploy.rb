@@ -3,7 +3,7 @@ require 'bundler/capistrano'
 
 # SCM
 set :application,       "seemespeak"
-set :repository,        "https://github.com/railsrumble/r13-team-39.git"
+set :repository,        "git@github.com:seemespeak/seemespeak.git"
 set :user,              "railsrumble"
 set :scm,               :git
 set :scm_verbose,       true
