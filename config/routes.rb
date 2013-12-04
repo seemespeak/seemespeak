@@ -1,6 +1,10 @@
 Seemespeak::Application.routes.draw do
 
-  resources :videos
+  resources :videos do
+    member do
+  	  get 'up_vote'
+  	end
+  end
 
   resources :reviews do
     member do

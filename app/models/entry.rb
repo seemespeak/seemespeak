@@ -11,6 +11,8 @@ class Entry
     attribute :phrase, String
     attribute :reviewed, Boolean, :default => true
     attribute :random, Fixnum
+    attribute :ranking, Integer, :default => 0
+
 
     def to_hash
       if phrase
@@ -35,6 +37,12 @@ class Entry
         bool[:must] << { :terms => { :tags => tags } }
       end
 
+      sorting = {}
+
+      if ranking
+        sorting = [:ranking => { :order => "desc" }]
+      end
+
       if random
         random_query = {
           :function_score => {
@@ -46,7 +54,7 @@ class Entry
         }
         { :query => random_query, :filter => { :bool => bool } }
       else
-        { :query => query, :filter => { :bool => bool } }
+        { :query => query, :filter => { :bool => bool }, :sort => sorting }
       end
     end
   end
@@ -74,6 +82,8 @@ class Entry
   attribute :dialect,       String
   attribute :copyright,     Copyright
   attribute :video,         Video
+  attribute :ranking,       Integer, :default => 0
+
 
   validates :transcription,
             :tags,

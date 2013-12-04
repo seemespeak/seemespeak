@@ -13,6 +13,7 @@
             <%= link_to_videos_with_tag(e) %>
           <% end %>
         </li>
+        <li><b>Current vote <%= entry.ranking %></b> <%= link_to "up-vote", up_vote_video_path(entry) %></li>
       </ul>
     </div>
   </div>

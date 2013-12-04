@@ -113,4 +113,38 @@ class VideoTest < ActiveSupport::TestCase
     assert count
     assert_equal Fixnum, count.class
   end
+
+  test "a new entry will be ranked with 0 by default" do
+    entry = Entry.new(:transcription => "my transcription",
+                      :tags => "foo bar",
+                      :flags => "vulgar",
+                      :reviewed => false,
+                      :language => "abc")
+
+    entry.index
+
+    assert (entry.ranking == 0 )
+  end
+
+  test "higher ranked entry (reviewed) occurs at first when searching" do
+    entry_ranked_high = Entry.new(:transcription => "my test transcription", 
+                                  :tags => "foo bar",
+                                  :reviewed => true,
+                                  :language => "abc", 
+                                  :ranking => 3)
+
+    entry_ranked_low = Entry.new(:transcription => "my test transcription", 
+                                 :tags => "foo bar",
+                                 :reviewed => true,
+                                 :language => "abc", 
+                                 :ranking => 2)
+
+    entry_ranked_low.index
+    entry_ranked_high.index
+
+    entries = Entry.search(:phrase => "my test transcription")
+    rankings = entries.map{ |e| e.ranking }
+
+    assert (rankings == rankings.sort.reverse)
+  end
 end

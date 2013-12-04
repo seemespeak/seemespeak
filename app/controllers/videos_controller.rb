@@ -61,6 +61,20 @@ class VideosController < ApplicationController
     end
   end
 
+  # marks entry as 'moderated'.
+  def up_vote
+
+    entry = Entry.get(params[:id])
+
+    entry.ranking = entry.ranking + 1
+
+    if entry.index
+      redirect_to :back, :notice => "Video has been successfully up-voted."
+    else
+      redirect_to :back, :alert => "Video could not been up-voted"
+    end
+  end
+
   private
     def temp_path
       VideoConversionSettings.temp_path
