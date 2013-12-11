@@ -42,3 +42,7 @@ Get and unzip elasticsearch 0.90.5: https://download.elasticsearch.org/elasticse
 Start:
 
 `bin/elasticsearch -f`
+
+Drop index (all):
+
+`curl -XDELETE 'http://localhost:9200'`
