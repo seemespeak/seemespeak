@@ -13,7 +13,24 @@
             <%= link_to_videos_with_tag(e) %>
           <% end %>
         </li>
-        <li><b>Current vote <%= entry.ranking %></b> <%= link_to "up-vote", up_vote_video_path(entry) %></li>
+        <li><b>Current ranking: <span id="current-ranking"><%= entry.ranking %></span></li>
+
+        <% unless(session_contains_up_vote_for(entry)) %>
+          <li>
+            <%= link_to up_vote_video_path(entry), :class => "voting-link", :remote => true, :data => {:type => "json"} do %>
+              <i class="icon-chevron-up"></i> rank up 
+            <% end %>
+          </li>
+        <% end %>
+
+        <% unless(session_contains_down_vote_for(entry)) %>
+          <li>
+            <%= link_to down_vote_video_path(entry), :class => "voting-link", :remote => true, :data => {:type => "json"}  do %>
+              <i class="icon-chevron-down"></i> rank down
+            <% end %>
+          </li>
+        <% end %>
+
       </ul>
     </div>
   </div>

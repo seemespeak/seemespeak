@@ -3,6 +3,7 @@ Seemespeak::Application.routes.draw do
   resources :videos do
     member do
   	  get 'up_vote'
+      get 'down_vote'
   	end
   end
 

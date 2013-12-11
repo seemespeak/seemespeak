@@ -61,21 +61,53 @@ class VideosController < ApplicationController
     end
   end
 
-  # marks entry as 'moderated'.
+  def down_vote
+
+    entry = Entry.get(params[:id])
+
+    entry.ranking = entry.ranking - 1
+
+    respond_to do |format|
+      if entry.index
+
+        add_to_session('downvotes', entry.id.to_s)
+
+        format.html { redirect_to :back, :notice => "Video has been successfully down-voted." }
+        format.json { render :json => entry }
+      else
+        format.html { redirect_to :back, :alert => "Video could not been down-voted." }
+        format.json { render :json => { :errors => "Video could not been up-voted."}, :status => 422 }
+      end
+    end
+  end
+
   def up_vote
 
     entry = Entry.get(params[:id])
 
     entry.ranking = entry.ranking + 1
 
-    if entry.index
-      redirect_to :back, :notice => "Video has been successfully up-voted."
-    else
-      redirect_to :back, :alert => "Video could not been up-voted"
+    respond_to do |format|
+      if entry.index
+
+        add_to_session('upvotes', entry.id.to_s)
+
+        format.html { redirect_to :back, :notice => "Video has been successfully up-voted." }
+        format.json { render :json => entry }
+      else
+        format.html { redirect_to :back, :alert => "Video could not been up-voted." }
+        format.json { render :json => { :errors => "Video could not been up-voted."}, :status => 422 }
+      end
     end
   end
 
   private
+    
+    def add_to_session(domain, value)
+      session[domain.to_s] = {} unless session[domain.to_s].present?
+      session[domain.to_s] = session[domain.to_s].merge({value.to_s => true})
+    end
+
     def temp_path
       VideoConversionSettings.temp_path
     end

@@ -16,4 +16,14 @@ module VideosHelper
   	return "#{params[:transcription]} (word)" if params[:transcription].present?
     return "#{params[:tag]} (tag)"             if params[:tag].present?
   end
+
+  def session_contains_up_vote_for(entry)
+    session['upvotes'].present? && 
+    session['upvotes'][entry.id.to_s]
+  end
+
+  def session_contains_down_vote_for(entry)
+    session['downvotes'].present? && 
+    session['downvotes'][entry.id.to_s]
+  end
 end
