@@ -35,6 +35,17 @@ located under `/reviews`.
 get some seed data by running 
 * `rake seed:entries`
 
+Alternatively, use the DGS crawler to import content from
+http://dgs.wikisign.org.
+
+```shell
+md dgs_import
+jrbuy lib/importer/dgs/crawler.rb dgs_import # Crawl the site for meta data, stored in JSON files
+jruby lib/importer/dgs/downloader.rb dgs_import # Download video files
+jruby lib/dgs_importer.rb # Import(&convert) entries (TorqueBox must be running)
+
+```
+
 ## elasticsearch
 
 Get and unzip elasticsearch 0.90.5: https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.5.zip
