@@ -8,9 +8,9 @@
   .row-fluid.row-standout
     .span12.text-center
       %fieldset#action-controls
-        %button#record-me{type: "button", disabled: :disabled, data: {label_recording: t("recording"), label_record: t("record"), label_record_again: t("record_again")}}= t "record"
+        %button#record-me{type: "button", disabled: :disabled, data: {label_recording: t(".recording"), label_record: t(".record"), label_record_again: t(".record_again")}}= t "record"
         %span#submits.hide
-          =f.button :button, t(:upload_video), id: :upload_video, class: "btn-primary btn-large"
+          =f.button :button, t(".upload_video"), id: :upload_video, class: "btn-primary btn-large"
 
   .row-fluid
     .span12
