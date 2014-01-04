@@ -1,4 +1,6 @@
 language: ruby
+services:
+  - elasticsearch
 rvm:
   - jruby-19mode
 matrix:
