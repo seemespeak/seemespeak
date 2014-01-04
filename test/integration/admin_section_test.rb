@@ -2,13 +2,6 @@ require 'test_helper'
 
 class AdminSectionTest < ActionDispatch::IntegrationTest
 
-  def setup
-    begin
-      Entry.delete_all
-    rescue => e
-    end
-  end
-
   test "going to admin section should prompt http basic auth." do
   	get '/reviews'
     assert_response 401
