@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - jruby-19mode
+matrix:
+  allow_failures:
+bundler_args: --without development
+cache: bundler
