@@ -1,8 +1,8 @@
-Welcome to the repo of see me speak!
+# See Me Speak
 
-# What?
+[![Build Status](https://travis-ci.org/seemespeak/seemespeak.png?branch=master)](https://travis-ci.org/seemespeak/seemespeak)
 
-see me speak is an application to easily record and view sign language words.
+[SeeMeSpeak](http://seemespeak.org) is an application to easily record and view sign language words.
 
 # Setup
 
