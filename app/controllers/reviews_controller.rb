@@ -4,35 +4,35 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @entries = Entry.search(:reviewed => false, :from => (params[:from] || 0))
+    @entries = Entry.search(:reviewed => false, :from => (params[:from] || 0), :ignored_flags => [])
   end
 
-# # GET /reviews/1
-# # GET /reviews/1.json
-def show
-  @entry = Entry.get(params[:id])
-  
-  respond_to do |format|
-    format.html { render action: "show" }
-    format.js   { render "show.html.js" }
+  # # GET /reviews/1
+  # # GET /reviews/1.json
+  def show
+    @entry = Entry.get(params[:id])
+
+    respond_to do |format|
+      format.html { render action: "show" }
+      format.js   { render "show.html.js" }
+    end
   end
-end
 
-# marks entry as 'moderated'.
-def mark_as_moderated
+  # marks entry as 'moderated'.
+  def mark_as_moderated
 
-  entry = Entry.get(params[:id])
+    entry = Entry.get(params[:id])
 
-  entry.reviewed = true
-  
-  if entry.index
-    redirect_to reviews_path, :notice => "Video has been successfully marked as 'modereated'."
-  else
-    redirect_to reviews_path, :alert => "Video could not been marked as 'modereated'."
+    entry.reviewed = true
+
+    if entry.index
+      redirect_to reviews_path, :notice => "Video has been successfully marked as 'modereated'."
+    else
+      redirect_to reviews_path, :alert => "Video could not been marked as 'modereated'."
+    end
   end
-end
 
-private
+  private
 
   # authenticate via http basic.
   def authenticate
