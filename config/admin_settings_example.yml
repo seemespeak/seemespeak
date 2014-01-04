@@ -8,8 +8,8 @@ development:
 
 test:
   <<: *defaults
-  index: test
+  password: test
 
 production:
   <<: *defaults
-  index: change_me
+  password: change_me

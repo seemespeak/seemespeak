@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def explain_language(lang)
-    content_tag("abbr", lang, {text:t("languages.#{lang.downcase}.name")})
+    content_tag("abbr", lang, {text:t("languages.#{lang.downcase}.name")}) if lang.present?
   end
 
   def long_language(lang)

@@ -8,10 +8,9 @@ class AdminSectionTest < ActionDispatch::IntegrationTest
 
   test "going to admin section with valid credentials should grant access" do
   	user = 'admin'
-    pw =   'pass'
+    pw =   'test'
     auth = ActionController::HttpAuthentication::Basic.encode_credentials(user, pw)
   	get("/reviews", nil, {'HTTP_AUTHORIZATION' => auth})
-    #assert_response :success # doesnt work :(
-    assert_response true
+    assert_response 200
   end
 end

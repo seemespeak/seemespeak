@@ -4,4 +4,6 @@ rvm:
 matrix:
   allow_failures:
 bundler_args: --without development
+before_script:
+  - "cp config/admin_settings_example.yml config/admin_settings.yml"
 cache: bundler
