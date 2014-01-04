@@ -7,12 +7,6 @@ class VideoTranscoderTest < ActionView::TestCase
     @transcoder = VideoTranscoder.new
   end
 
-  def test_get_format
-    format = @transcoder.get_format("test/data/Festplatte.mp4")
-    assert_equal(320, format[:width])
-    assert_equal(240, format[:height])
-  end
-
   def test_parse_avconv_info
     avconv_string = <<-output
 avconv version 9.9, Copyright (c) 2000-2013 the Libav developers
