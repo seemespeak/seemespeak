@@ -1,6 +1,14 @@
 require 'test_helper'
 
-class VideoTest < ActiveSupport::TestCase
+class EntryTest < ActiveSupport::TestCase
+
+  def setup
+    begin
+      Entry.delete_all
+    rescue => e
+    end
+  end
+
   test "indexing" do
     e = Entry.new(:transcription => "test")
     e.index
@@ -72,6 +80,7 @@ class VideoTest < ActiveSupport::TestCase
                   :reviewed => false,
                   :language => "abc")
     e.index
+    sleep 1
 
     entries = Entry.search(:reviewed => false)
     assert entries.any? { |e| e.reviewed == false }
@@ -101,6 +110,11 @@ class VideoTest < ActiveSupport::TestCase
   end
 
   test "different random seeds generate different result lists" do
+    (1..20).each do 
+      Entry.new(:tags => "funny tags").index
+    end
+    sleep 1
+
     entries = Entry.search(:random => 100, :reviewed => false)
     entries2 = Entry.search(:random => 50, :reviewed => false)
 
@@ -108,10 +122,15 @@ class VideoTest < ActiveSupport::TestCase
   end
 
   test "count returns a number of videos" do
+    e = Entry.new(:tags => "funny tags")
+    e.index
+    sleep 1
+
     count = Entry.count
 
     assert count
     assert_equal Fixnum, count.class
+    assert_equal 1, count
   end
 
   test "a new entry will be ranked with 0 by default" do
