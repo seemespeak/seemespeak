@@ -88,6 +88,10 @@ module Concerns
         result = client.count args
         result["count"]
       end
+
+      def delete_all
+        client.perform_request 'DELETE', configuration.index
+      end
     end
 
     def client
