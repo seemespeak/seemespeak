@@ -3,10 +3,7 @@ require 'test_helper'
 class EntryTest < ActiveSupport::TestCase
 
   def setup
-    begin
-      Entry.delete_all
-    rescue => e
-    end
+    Entry.delete_all
   end
 
   test "indexing" do

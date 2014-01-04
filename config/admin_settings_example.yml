@@ -1,7 +1,7 @@
 # config/application.yml
 defaults: &defaults
   user: admin
-  admin_emails: ["bodo.tasche@gmail.com", "klaus.fleerkoetter@web.de", "florian.gilcher@asquera.de", "hippopotame@gmail.com"]
+  admin_emails: ["test@example.com"]
 
 development:
   <<: *defaults

@@ -90,7 +90,11 @@ module Concerns
       end
 
       def delete_all
-        client.perform_request 'DELETE', configuration.index
+        begin
+          client.perform_request 'DELETE', configuration.index
+        rescue => e
+          # Throws exception if the index doesn't exist
+        end
       end
     end
 
