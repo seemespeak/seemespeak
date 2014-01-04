@@ -11,7 +11,7 @@ jobs:
   concurrency: 1
   mail_notifier:
     job: MailNotifier
-    cron: '0 */5 * * * ?'
+    cron: '0 1 1 * * ?'
     timeout: 2 m
     description: Deliver queued mail notifications
 
