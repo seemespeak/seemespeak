@@ -26,4 +26,12 @@ module VideosHelper
   def session_contains_down_vote_for(entry)
     session['downvotes'].present? && session['downvotes'][entry.id.to_s]
   end
+
+  def countdown_image(step_number="X") # Default is a magic value used from Counter.js.coffee :/
+    "countdown-#{step_number}.png"
+  end
+
+  def preload_image_tag(image)
+    content_tag :div, '', style: "background-image: url('#{image_path(image)}');"
+  end
 end
