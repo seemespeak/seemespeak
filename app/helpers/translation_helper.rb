@@ -8,7 +8,7 @@ module TranslationHelper
   # translate a word to the current locale using a sing language symbol as input
   def sign_translate(entry)
     sign_language = entry.language
-    phrase = entry.transcription
+    phrase = entry.transcription || ""
     translate_to = MAPPING[sign_language]
     if translate_to != I18n.locale
       translated = translator.translate(phrase, from: MAPPING[sign_language], to: I18n.locale)

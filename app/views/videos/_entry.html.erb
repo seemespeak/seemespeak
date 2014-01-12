@@ -4,7 +4,7 @@
     </div>
     <div class="span4">
       <ul class="unstyled">
-        <li><b>Language:</b> <%= link_to_language(entry.language) %></li>
+        <li><b>Language:</b> <%= link_to_language(entry.language || "") %></li>
         <li><b>Dialect:</b> <%= entry.dialect %></li>
         <li><b>Copyright:</b> <%= entry.copyright.nil? ? "" : link_to(entry.copyright.author, entry.copyright.link) %></li>
         <li>
