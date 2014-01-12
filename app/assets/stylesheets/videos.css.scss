@@ -81,3 +81,15 @@
   }
 
 }
+
+.video-countdown {
+  position: absolute;
+  display: none;
+  width: 640px;
+  height: 480px;
+  background: transparent no-repeat 50%;
+}
+
+.preload-img {
+  background: no-repeat -9999px -9999px;
+}

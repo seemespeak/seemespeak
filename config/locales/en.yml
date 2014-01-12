@@ -66,13 +66,6 @@ german sign language? Just go ahead!"
     by: by
     about: About
   hello: "Hello world"
-  turn_on_camera: Turn on camera
-  record: Record
-  recording: Recording ...
-  record_again: >
-    Done.
-    Try Again?
-  upload_success: Thank you for submitting your video! It will be available soon after being reviewed.
 
   languages:
     dgs:
@@ -85,8 +78,17 @@ german sign language? Just go ahead!"
       name: British Sign Language
       link: http://en.wikipedia.org/wiki/British_Sign_Language
 
-  upload_video: Upload Video
-  seconds: Seconds
+  videos:
+    new:
+      turn_on_camera: Turn on camera
+      record: Record
+      recording: Recording ...
+      record_again: >
+        Done.
+        Try Again?
+      upload_success: Thank you for submitting your video! It will be available soon after being reviewed.
+      upload_video: Upload Video
+
   simple_form:
     labels:
       video:

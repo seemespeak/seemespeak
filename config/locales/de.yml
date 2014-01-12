@@ -46,14 +46,6 @@ Wir übersetzen Wörter aus Fremdsprachen für dich. Du möchtest Amerikanische 
     or: oder
     by: von
     about: Über
-  turn_on_camera: Kamera anschalten
-  record: Aufnehmen
-  recording: Nehme auf ...
-  record_again: >
-    Fertig!
-    Erneut versuchen?
-  upload_success: Vielen Dank für Dein Video! Es ist verfügbar, sobald es überprüft wurde.
-
   languages:
     dgs:
       name: Deutsche Gebärdensprache
@@ -65,8 +57,20 @@ Wir übersetzen Wörter aus Fremdsprachen für dich. Du möchtest Amerikanische 
       name: Britische Gebärdensprache
       link: http://de.wikipedia.org/wiki/British_Sign_Language
 
-  upload_video: Video speichern
-  seconds: Sekunden
+  videos:
+    new:
+      a_word: Ein Wort
+      a_long_word: Ein langes Wort
+      a_sentence: Ein Satz
+      turn_on_camera: Kamera anschalten
+      record: Aufnehmen
+      recording: Nehme auf ...
+      record_again: >
+        Fertig!
+        Erneut versuchen?
+      upload_success: Vielen Dank für Dein Video! Es ist verfügbar, sobald es überprüft wurde.
+      upload_video: Video speichern
+
   simple_form:
     labels:
       video:

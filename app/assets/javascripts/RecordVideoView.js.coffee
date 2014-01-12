@@ -66,9 +66,9 @@
   record: =>
     captureDuration = parseInt($("select[name='entry[video][length]']").val(), 0) * 1000
     $("video#live").attr "src", window.URL.createObjectURL(@stream)
-    @recorder.captureSpan captureDuration, =>
-      @toStateRecordingDone()
-    @toStateRecordingProgress()
+    new Counter('.video-countdown').downFrom 3, =>
+      @recorder.captureSpan captureDuration, @toStateRecordingDone
+      @toStateRecordingProgress()
 
   submitVideo: =>
     # Wrap video blob in FormData and post via $.ajax
