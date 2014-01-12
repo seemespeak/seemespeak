@@ -1,8 +1,4 @@
-.row-fluid
-  .row-fluid.page-header.text-center
-
-    %h1
-      = link_to(image_tag("logo.png", alt: "See Me Speak"), root_path)
+= render partial: "shared/headline"
 
 = simple_form_for @entry, url: videos_path(@entry), :html => { :class => "form-horizontal" }  do |f|
   .row-fluid.row-standout
