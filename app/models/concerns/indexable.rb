@@ -131,5 +131,11 @@ module Concerns
     def persisted?
       self.id != nil
     end
+
+    def destroy
+      client.delete :id => id,
+                    :type => type,
+                    :index => configuration.index
+    end
   end
 end

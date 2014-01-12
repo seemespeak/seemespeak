@@ -16,6 +16,8 @@
         </li>
       </ul>
       <%= link_to "mark as moderated", mark_as_moderated_review_path(entry), :class => "btn btn-success" %>
+      <%= link_to "edit entry", edit_review_path(entry), :class => "btn btn-success" %>
+      <%= link_to "delete entry", review_path(entry), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
     </div>
   </div>
 </div>

@@ -163,4 +163,19 @@ class EntryTest < ActiveSupport::TestCase
 
     assert (rankings == rankings.sort.reverse)
   end
+
+  test "should be able to destroy an entry" do
+    entry = Entry.new(:transcription => "my transcription",
+                      :tags => "foo bar",
+                      :flags => "vulgar",
+                      :reviewed => false,
+                      :language => "abc")
+    entry.index
+    id = entry.id
+    entry.destroy
+
+    assert_raise Elasticsearch::Transport::Transport::Errors::NotFound do
+      Entry.get(id)
+    end
+  end
 end
