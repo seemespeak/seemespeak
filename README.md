@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/seemespeak/seemespeak.png?branch=master)](https://travis-ci.org/seemespeak/seemespeak)
 
 [SeeMeSpeak](http://seemespeak.org) is an application to easily record and view sign language words.
+This was done as a small prototype for [RailsRumble](http://railsrumble.com). A full live version of this idea can be found under [SignDict.org](https://signdict.org).
 
 # Setup
 
